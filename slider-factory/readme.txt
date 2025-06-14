@@ -1,33 +1,35 @@
 === Slider Factory - Responsive Photo Slider, Image Slider, Video Slider, Carousel Slideshow ===
 Contributors: FARAZFRANK
-Tags: slider, image slider, photo slider, team slider, testimonial slider
-Requires at least: 4.0
-Tested up to: 6.6.1
+Tags: slider, responsive-slider, image-slider, video-slider, carousel-slider
+Requires at least: 5.0
+Tested up to: 6.8.1
 Stable tag: 1.3.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create responsive image slider, photo slider, video slider, team and testimonial slider with 12 templates.
+Create versatile sliders for WordPress: responsive image slider, photo slider, video slider, team and testimonial slider with 12 templates.
 
 == Description ==
 
-Slider Factory is a dynamic WordPress plugin, serving up 12 unique layouts within a single dashboard panel. With this tool, creating an image slider, photo slider, or even a video slider becomes a breeze. You can also easily build photo carousels, responsive sliders, and photo galleries.
+## Why Choose Slider Factory?
+
+**12 Unique Layouts**: From image sliders to video carousels, find the perfect design.
+**SEO-Friendly: Title**, description, and alt text for images boost search rankings.
+**Drag-and-Drop Interface**: Effortlessly create and manage sliders.
+**Responsive Design**: Looks great on all devices.
+**Compatibility**: compatible with WPML, Elementor, Visual Composer, WPBakery Page Builder, and Page Block Editor plugins.
+
+Slider Factory is a dynamic WordPress plugin with 12 unique layouts, supporting image, photo, video sliders, and carousels. Built with Bootstrap 5, and compatible with WPML, Elementor, Visual Composer, WPBakery Page Builder, and all Page Block Editor plugins. Features bulk image uploads, drag-and-drop sorting, custom CSS, and real-time previews.
 
 Optimized for SEO, Slider Factory features title, description, and alt text for images, enhancing your website's search engine visibility. Built with the latest Bootstrap 5 CSS framework, our dashboard is fully responsive and compatible with all devices. The plugin allows for bulk image uploads using a multiple image uploader, and you can easily sort the images in your desired sequence using a drag and drop feature. Plus, you have the option to apply custom CSS code to tailor the design to your needs.
 
-Creating a slideshow is as easy as selecting a layout, adding slider images, configuring settings, and generating a shortcode. This shortcode can then be embedded on any page or post to start your image slider show. It’s an incredibly user-friendly plugin with a variety of layouts and settings.
+Creating a slideshow is as easy as selecting a layout, adding slider images, configuring settings, and generating a shortcode. Slider shortcode can then be embedded on any page or post to start your image slider show. It's an incredibly user-friendly plugin with a variety of layouts and settings.
 
 Slider Factory is fully compatible with various tools like WPML, Elementor, Visual Composer, WPBakery Page Builder, and all Page Block Editor plugins, making it an indispensable part of your WordPress setup.
 
-Experience the power of Slider Factory – an ultimate WordPress plugin that makes creating eye-catching sliders effortless. This tool boasts an intuitive interface, which simplifies the design process, making it easy to create image sliders, photo sliders, or video sliders that leave a lasting impression.
-
-With Slider Factory, you have a range of slider types to choose from, including dynamic image sliders, engaging video sliders, and informative content sliders. Customizing each element to match your website's unique style and brand identity is easy.
-
 Unleash your creativity with seamless animation effects, smooth transitions, and user-friendly navigation controls, adding a professional touch to your sliders. 
 
-Regardless of the device - desktops, tablets, or mobiles - Slider Factory ensures a flawless display, delivering an immersive experience to every visitor. 
-
-With the convenience of real-time previews, you can fine-tune your sliders before they go live. Boost your search engine visibility with SEO-friendly features like descriptive alt text for images, thereby improving your site's discoverability and search rankings.
+Regardless of the device - desktops, tablets, or mobiles - Slider Factory ensures a flawless display, delivering an immersive responsive experience to every visitor. 
 
 Performance is key – Slider Factory guarantees fast-loading sliders without compromising your website's speed, making it an ideal choice for your responsive slider needs.
 
@@ -65,7 +67,7 @@ When you create and save, it generate a shortcode, like below:
 In the above shortcode, **`id`** denotes slider id and **`layout`** denotes the layout number used to design.
 
 
-## Pro Version Feature
+## Slider Factory Pro Version Feature
 
 * 20 Different Layouts
 * Mobile Responsive
@@ -128,36 +130,41 @@ https://www.youtube.com/watch?v=H0_FnzsrEGc
 
 == Frequently Asked Questions ==
 
-= What is the plugin license? =
+= Q: How do I install the plugin? =
+* A: Please follow this [link](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/#install) to install the plugin.
 
-* This plugin is released under a GPL license.
+= Q: How do I create a slideshow? =
+* A: Please follow this [link](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/#create).
 
-= How to install this plugin? =
+= Q: How do I publish the slideshow on the website? =
+* A: Please follow this [link](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/#publish) publish on a page.
 
-* Please follow this [link](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/#install) to install the plugin.
+= Q: Is it compatible with Elementor and Gutenberg? =
+* A: Yes, fully compatible with all major page builders.
 
-= How to create a slideshow using plugin? =
+= Q: How many slideshow I can create? =
+* A: You can create unlimited sliders with unlimited images/photos.
 
-* Please follow this [link](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/#create).
+= Q: How many layouts plugin offers? =
+* A: In Free version, there 12 unique slider layouts and in Pro version 20+ layouts available.
 
-= How to publish a slideshow on a page? =
-
-* Please follow this [link](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/#publish) publish on a page.
+= Q: What is the plugin license? =
+* A: This plugin is released under a GPL license.
 
 == Screenshots ==
 
-1. Layout 1
-2. Layout 2
-3. Layout 3
-4. Layout 4
-5. Layout 5
-6. Layout 6
-7. Layout 7
-8. Layout 8
-9. Layout 9
-10. Layout 10
-11. Layout 11
-12. Layout 12
+1. Layout 1: Image Slider – Showcase images with customizable settings.
+2. Layout 2: Video Slider – Embed videos seamlessly.
+3. Layout 3: Carousel Slider – Display multiple items in a carousel format.
+4. Layout 4: Photo Gallery – Create stunning photo galleries.
+5. Layout 5: Team Slider – Highlight team members.
+6. Layout 6: Testimonial Slider – Showcase customer testimonials.
+7. Layout 7: Content Slider – Display text and images together.
+8. Layout 8: Hero Slider – Create full-width hero banners.
+9. Layout 9: Product Slider – Showcase WooCommerce products.
+10. Layout 10: Event Slider – Display upcoming events.
+11. Layout 11: Blog Slider – Feature latest blog posts.
+12. Layout 12: Custom Slider – Build fully customizable sliders.
 
 == Changelog ==
 
