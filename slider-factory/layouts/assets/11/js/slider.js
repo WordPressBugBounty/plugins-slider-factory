@@ -1,74 +1,73 @@
-var Slider = (function() {
+var SF_Layout11_Slider = (function () {
 
-	var $container      = jQuery( '#ps-container' ),
-		$contentwrapper = $container.children( 'div.ps-contentwrapper' ),
+	var $container, $contentwrapper, $items, itemsCount, $slidewrapper, $slidescontainer, $slides, $navprev, $navnext, current, isAnimating, support, transEndEventNames, transEndEventName;
+
+	var init = function () {
+		$container = jQuery('#ps-container');
+		$contentwrapper = $container.children('div.ps-contentwrapper');
 		// the items (description elements for the slides/products)
-		$items        = $contentwrapper.children( 'div.ps-content' ),
-		itemsCount    = $items.length,
-		$slidewrapper = $container.children( 'div.ps-slidewrapper' ),
+		$items = $contentwrapper.children('div.ps-content');
+		itemsCount = $items.length;
+		$slidewrapper = $container.children('div.ps-slidewrapper');
 		// the slides (product images)
-		$slidescontainer = $slidewrapper.find( 'div.ps-slides' ),
-		$slides          = $slidescontainer.children( 'div' ),
+		$slidescontainer = $slidewrapper.find('div.ps-slides');
+
+		$slides = $slidescontainer.children('div');
 		// navigation arrows
-		$navprev = $slidewrapper.find( 'nav > a.ps-prev' ),
-		$navnext = $slidewrapper.find( 'nav > a.ps-next' ),
+		$navprev = $slidewrapper.find('nav > a.ps-prev');
+		$navnext = $slidewrapper.find('nav > a.ps-next');
+
 		// current index for items and slides
-		current = 0,
+		current = 0;
 		// checks if the transition is in progress
-		isAnimating = false,
+		isAnimating = false;
 		// support for CSS transitions
-		support = Modernizr.csstransitions,
+		support = Modernizr.csstransitions;
 		// transition end event
 		// https://github.com/twitter/bootstrap/issues/2870
 		transEndEventNames = {
-			'WebkitTransition' : 'webkitTransitionEnd',
-			'MozTransition' : 'transitionend',
-			'OTransition' : 'oTransitionEnd',
-			'msTransition' : 'MSTransitionEnd',
-			'transition' : 'transitionend'
-	},
+			'WebkitTransition': 'webkitTransitionEnd',
+			'MozTransition': 'transitionend',
+			'OTransition': 'oTransitionEnd',
+			'msTransition': 'MSTransitionEnd',
+			'transition': 'transitionend'
+		};
 		// its name
-		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+		transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
 
-		init             = function() {
+		// show first item
+		var $currentItem = $items.eq(current),
+			$currentSlide = $slides.eq(current);
 
-			// show first item
-			var $currentItem  = $items.eq( current ),
-				$currentSlide = $slides.eq( current ),
-				initCSS       = {
-					top : 0,
-					zIndex : 999
-			};
+		$currentItem.addClass('ps-active');
+		$currentSlide.addClass('ps-active');
 
-			$currentItem.css( initCSS );
-			$currentSlide.css( initCSS );
+		// update nav images
+		updateNavImages();
 
-			// update nav images
-			updateNavImages();
+		// initialize some events
+		initEvents();
 
-			// initialize some events
-			initEvents();
-
-		},
-		updateNavImages  = function() {
+	},
+		updateNavImages = function () {
 
 			// updates the background image for the navigation arrows
-			var configPrev = ( current > 0 ) ? $slides.eq( current - 1 ).css( 'background-image' ) : $slides.eq( itemsCount - 1 ).css( 'background-image' ),
-				configNext = ( current < itemsCount - 1 ) ? $slides.eq( current + 1 ).css( 'background-image' ) : $slides.eq( 0 ).css( 'background-image' );
+			var configPrev = (current > 0) ? $slides.eq(current - 1).css('background-image') : $slides.eq(itemsCount - 1).css('background-image'),
+				configNext = (current < itemsCount - 1) ? $slides.eq(current + 1).css('background-image') : $slides.eq(0).css('background-image');
 
-			$navprev.css( 'background-image', configPrev );
-			$navnext.css( 'background-image', configNext );
+			$navprev.css('background-image', configPrev);
+			$navnext.css('background-image', configNext);
 
 		},
-		initEvents       = function() {
+		initEvents = function () {
 
 			$navprev.on(
 				'click',
-				function( event ) {
+				function (event) {
 
-					if ( ! isAnimating ) {
+					if (!isAnimating) {
 
-						slide( 'prev' );
+						slide('prev');
 
 					}
 					return false;
@@ -78,11 +77,11 @@ var Slider = (function() {
 
 			$navnext.on(
 				'click',
-				function( event ) {
+				function (event) {
 
-					if ( ! isAnimating ) {
+					if (!isAnimating) {
 
-						slide( 'next' );
+						slide('next');
 
 					}
 					return false;
@@ -91,91 +90,55 @@ var Slider = (function() {
 			);
 
 			// transition end event
-			$items.on( transEndEventName, removeTransition );
-			$slides.on( transEndEventName, removeTransition );
+			$items.on(transEndEventName, removeTransition);
+			$slides.on(transEndEventName, removeTransition);
 
 		},
-		removeTransition = function() {
+		removeTransition = function () {
 
 			isAnimating = false;
-			jQuery( this ).removeClass( 'ps-move' );
+			jQuery(this).removeClass('ps-move');
 
 		},
-		slide            = function( dir ) {
+		slide = function (dir) {
 
 			isAnimating = true;
 
-			var $currentItem  = $items.eq( current ),
-				$currentSlide = $slides.eq( current );
+			var $currentItem = $items.eq(current),
+				$currentSlide = $slides.eq(current);
 
 			// update current value
-			if ( dir === 'next' ) {
+			if (dir === 'next') {
 
-				( current < itemsCount - 1 ) ? ++current : current = 0;
+				(current < itemsCount - 1) ? ++current : current = 0;
 
-			} else if ( dir === 'prev' ) {
+			} else if (dir === 'prev') {
 
-				( current > 0 ) ? --current : current = itemsCount - 1;
+				(current > 0) ? --current : current = itemsCount - 1;
 
 			}
-				// new item that will be shown
-			var $newItem = $items.eq( current ),
-				// new slide that will be shown
-				$newSlide = $slides.eq( current );
+			// Logic for CSS Class based transition (Flexbox friendly)
 
-			// position the new item up or down the viewport depending on the direction
-			$newItem.css(
-				{
-					top : ( dir === 'next' ) ? '-100%' : '100%',
-					zIndex : 999
-				}
-			);
+			// Remove active class from CURRENT
+			$currentItem.removeClass('ps-active');
+			$currentSlide.removeClass('ps-active');
 
-			$newSlide.css(
-				{
-					top : ( dir === 'next' ) ? '100%' : '-100%',
-					zIndex : 999
-				}
-			);
+			// Add active class to NEW
+			var $newItem = $items.eq(current);
+			var $newSlide = $slides.eq(current);
 
-			setTimeout(
-				function() {
+			$newItem.addClass('ps-active');
+			$newSlide.addClass('ps-active');
 
-					// move the current item and slide to the top or bottom depending on the direction
-					$currentItem.addClass( 'ps-move' ).css(
-						{
-							top : ( dir === 'next' ) ? '100%' : '-100%',
-							zIndex : 1
-						}
-					);
+			isAnimating = false; // Transition handled by CSS
+			updateNavImages();
 
-					$currentSlide.addClass( 'ps-move' ).css(
-						{
-							top : ( dir === 'next' ) ? '-100%' : '100%',
-							zIndex : 1
-						}
-					);
-
-					// move the new ones to the main viewport
-					$newItem.addClass( 'ps-move' ).css( 'top', 0 );
-					$newSlide.addClass( 'ps-move' ).css( 'top', 0 );
-
-					// if no CSS transitions set the isAnimating flag to false
-					if ( ! support ) {
-
-						isAnimating = false;
-
-					}
-
-				},
-				0
-			);
 
 			// update nav images
 			updateNavImages();
 
 		};
 
-	return { init : init };
+	return { init: init };
 
 })();

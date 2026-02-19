@@ -4,12 +4,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Plugin Name:       Slider Factory - 1.3.12
+ * Plugin Name:       Slider Factory - 1.3.13
  * Plugin URI:        https://wpfrank.com/
  * Description:       Slider factory provides multiple slider layouts in single dashboard.
- * Version:           1.3.12
- * Requires at least: 4.0
- * Requires PHP:      4.0
+ * Version:           1.3.13
+ * Requires at least: 5.0
+ * Requires PHP:      5.0
  * Author:            FARAZFRANK
  * Author URI:        https://profiles.wordpress.org/farazfrank/
  * License:           GPL v2 or later
@@ -136,30 +136,47 @@ function get_sf_slider_id() {
 function wpfrank_sf_li_generate_ajax_callback() {
 	if ( current_user_can( 'manage_options' ) ) {
 		if ( sanitize_text_field( wp_unslash( isset( $_POST['sf_upload_nonce'] ) ) ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['sf_upload_nonce'] ) ), 'sf-upload-nonce' ) ) {
-			if ( sanitize_text_field( wp_unslash( isset( $_POST['sf_attachment_id'] ) ) ) && sanitize_text_field( wp_unslash( isset( $_POST['sf_slider_id'] ) ) ) ) {
-				// defaults
-				$sf_slide_title = $sf_slide_alt = $sf_slide_descs = $sf_slide_thumbnail = '';
-				// load values
-				$attachment_id  = sanitize_text_field( wp_unslash( $_POST['sf_attachment_id'] ) );
-				$sf_slide_title = get_the_title( $attachment_id );
-				$sf_slide_alt   = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
-				// wp_get_attachment_image_src ( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false )
-				// thumb, thumbnail, medium, large, post-thumbnail
-				$sf_slide_thumbnail = wp_get_attachment_image_src( $attachment_id, 'large', true ); // attachment medium URL
-				$attachment         = get_post( $attachment_id );
-				$sf_slide_descs     = $attachment->post_content; // attachment description
-				?>
-				<div class="sf-slide-column col-md-4 col-lg-3 col-xl-2 my-2 sf_slide_<?php echo esc_attr( $attachment_id ); ?>" data-position="<?php echo esc_attr( $attachment_id ); ?>">
-					<div id="sf-slide-box" class="p-2 text-center shadow">
-						<img class="img-fluid" src="<?php echo esc_url( $sf_slide_thumbnail[0] ); ?>" style="height: 200px;">
-						<input type="text" class="form-control mt-1 sf_slide_id" name="sf_slide_id[<?php echo esc_attr( $attachment_id ); ?>]" value="<?php echo esc_attr( $attachment_id ); ?>" readonly>
-						<input type="text" class="form-control mt-1 sf_slide_title" name="sf_slide_title[<?php echo esc_attr( $attachment_id ); ?>]" placeholder="<?php esc_attr_e( 'Slide Title', 'slider-factory' ); ?>" value="<?php echo esc_attr( $sf_slide_title ); ?>">
-						<textarea class="form-control mt-1 sf_slide_desc" name="sf_slide_desc[<?php echo esc_attr( $attachment_id ); ?>]" placeholder="<?php esc_attr_e( 'Slide Description', 'slider-factory' ); ?>"><?php echo esc_textarea( $sf_slide_descs ); ?></textarea>
-						<input type="text" class="form-control mt-1 sf_slide_alt_text" name="sf_slide_alt_text[<?php echo esc_attr( $attachment_id ); ?>]" placeholder="<?php esc_attr_e( 'Slide Image SEO Text', 'slider-factory' ); ?>" value="<?php echo esc_attr( $sf_slide_alt ); ?>">
-						<button type="button" class="form-control btn btn-danger mt-1" style="background-color: #e76f51; border-color: #e76f51;" onclick="return WpfrankSFremoveSlide('<?php echo esc_attr( $attachment_id ); ?>');" name="sf_slide_remove"><?php esc_attr_e( 'Remove Slide', 'slider-factory' ); ?></button>
-					</div>
-				</div>
-				<?php
+			if ( ( isset( $_POST['sf_attachment_ids'] ) || isset( $_POST['sf_attachment_id'] ) ) && isset( $_POST['sf_slider_id'] ) ) {
+				
+				// Prepare IDs array
+				$attachment_ids = array();
+				if ( isset( $_POST['sf_attachment_ids'] ) ) {
+					$ids = $_POST['sf_attachment_ids'];
+					if ( is_array( $ids ) ) {
+						$attachment_ids = array_map( 'sanitize_text_field', $ids );
+					}
+				} elseif ( isset( $_POST['sf_attachment_id'] ) ) {
+					$attachment_ids[] = sanitize_text_field( wp_unslash( $_POST['sf_attachment_id'] ) );
+				}
+
+				if ( ! empty( $attachment_ids ) ) {
+					foreach ( $attachment_ids as $attachment_id ) {
+						// defaults
+						$sf_slide_title = $sf_slide_alt = $sf_slide_descs = $sf_slide_thumbnail = '';
+						
+						// load values
+						$sf_slide_title = get_the_title( $attachment_id );
+						$sf_slide_alt   = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+						
+						// wp_get_attachment_image_src ( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false )
+						// thumb, thumbnail, medium, large, post-thumbnail
+						$sf_slide_thumbnail = wp_get_attachment_image_src( $attachment_id, 'large', true ); // attachment medium URL
+						$attachment         = get_post( $attachment_id );
+						$sf_slide_descs     = $attachment->post_content; // attachment description
+						?>
+						<div class="sf-slide-column col-md-4 col-lg-3 col-xl-2 my-2 sf_slide_<?php echo esc_attr( $attachment_id ); ?>" data-position="<?php echo esc_attr( $attachment_id ); ?>">
+							<div id="sf-slide-box" class="p-2 text-center shadow">
+								<img class="img-fluid" src="<?php echo esc_url( $sf_slide_thumbnail[0] ); ?>" style="height: 200px;">
+								<input type="text" class="form-control mt-1 sf_slide_id" name="sf_slide_id[<?php echo esc_attr( $attachment_id ); ?>]" value="<?php echo esc_attr( $attachment_id ); ?>" readonly>
+								<input type="text" class="form-control mt-1 sf_slide_title" name="sf_slide_title[<?php echo esc_attr( $attachment_id ); ?>]" placeholder="<?php esc_attr_e( 'Slide Title', 'slider-factory' ); ?>" value="<?php echo esc_attr( $sf_slide_title ); ?>">
+								<textarea class="form-control mt-1 sf_slide_desc" name="sf_slide_desc[<?php echo esc_attr( $attachment_id ); ?>]" placeholder="<?php esc_attr_e( 'Slide Description', 'slider-factory' ); ?>"><?php echo esc_textarea( $sf_slide_descs ); ?></textarea>
+								<input type="text" class="form-control mt-1 sf_slide_alt_text" name="sf_slide_alt_text[<?php echo esc_attr( $attachment_id ); ?>]" placeholder="<?php esc_attr_e( 'Slide Image SEO Text', 'slider-factory' ); ?>" value="<?php echo esc_attr( $sf_slide_alt ); ?>">
+								<button type="button" class="form-control btn btn-danger mt-1" style="background-color: #e52e00; border-color: #e52e00;" onclick="return WpfrankSFremoveSlide('<?php echo esc_attr( $attachment_id ); ?>');" name="sf_slide_remove"><?php esc_attr_e( 'Remove Slide', 'slider-factory' ); ?></button>
+							</div>
+						</div>
+						<?php
+					}
+				}
 				wp_die(); // this is required to terminate immediately and return a proper response
 			} // current_user_can end
 		} else {
@@ -551,7 +568,7 @@ function wpfrank_sf_register_scripts() {
 	// layout 8 CSS and JS end
 
 	// layout 11 CSS and JS start
-	wp_register_style( 'sf-11-product-slider-style-css', plugin_dir_url( __FILE__ ) . 'layouts/assets/11/css/test-style.css' );
+	wp_register_style( 'sf-11-product-slider-style-css', plugin_dir_url( __FILE__ ) . 'layouts/assets/11/css/test-style.css', array(), '1.0.1' );
 	wp_register_script( 'sf-11-product-slider-mordenizer-js', plugin_dir_url( __FILE__ ) . 'layouts/assets/11/js/modernizr.custom.js', array( 'jquery' ), '1.0.0' );
 	wp_register_script( 'sf-11-product-slider-js', plugin_dir_url( __FILE__ ) . 'layouts/assets/11/js/slider.js', array( 'jquery' ), '1.0.0' );
 	// layout 11 CSS and JS end

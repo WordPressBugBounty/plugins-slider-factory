@@ -115,6 +115,6 @@ wp_enqueue_script( 'sf-11-product-slider-js' );
 </style>
 <script type="text/javascript">
 jQuery(function () {
-	Slider.init();
+	SF_Layout11_Slider.init();
 });
 </script>

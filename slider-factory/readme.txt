@@ -1,11 +1,10 @@
-=== Slider Factory for Images and Videos ===
+=== Slider Factory ===
 Contributors: awordpresslife, razipathhan, hanif0991, muhammadshahid, fkfaisalkhan007, sharikkhan007, zishlife, FARAZFRANK
-Version: 1.3.12
 Donate link: https://paypal.me/buymecupofcoffee?locale.x=en_GB&country.x=IN
 Tags: slider, image slider, photo slider, carousel, responsive slider
 Requires at least: 5.0
 Tested up to: 6.9
-Stable tag: 1.3.12
+Stable tag: 1.3.13
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,18 +15,15 @@ Build image sliders, photo carousels, and video slideshows with 12 layouts. Drag
 
 Slider Factory helps you create attractive slideshows for your WordPress website. Whether you need an image slider for your homepage, a photo carousel for your portfolio, or a video slideshow for product demos, this plugin offers 12 ready-to-use layouts to get you started quickly.
 
-**View Free Demo:** **[Slider Factory](https://wpfrank.com/demo/slider-factory-free-wordpress-plugin/)** | **View Pro Demo:** **[Slider Factory Pro](https://wpfrank.com/demo/slider-factory-pro/)**
-**Learn More:** **[Slider Factory Pro Features](https://wpfrank.com/wordpress-plugins/slider-factory-pro/)** | **Purchase Pro:** **[Buy Slider Factory Pro](https://wpfrank.com/account/signup/slider-factory-pro/)**
-
 The plugin works with a simple drag-and-drop interface. Upload your images, arrange them in your preferred order, adjust the settings, and place the shortcode on any page or post. Your slider will automatically adapt to different screen sizes, looking sharp on desktops, tablets, and mobile phones.
-
-== Watch Video Tutorial ==
-
-https://www.youtube.com/watch?v=UC0Ru2L4mFk&list=PLOeoids2h7nJrQEY8ro6-zp4i9wbUB6BY
 
 Each slider supports titles, descriptions, and alt text for images, which helps with accessibility and search engine optimization. You can upload multiple images at once and rearrange them easily. The admin dashboard is built with Bootstrap 5, making it intuitive to navigate and configure your sliders.
 
 Slider Factory integrates smoothly with popular page builders including Elementor, Visual Composer, WPBakery Page Builder, and the Gutenberg block editor. It also works with WPML for multilingual websites.
+
+== Watch Video Tutorial ==
+
+https://www.youtube.com/watch?v=UC0Ru2L4mFk&list=PLOeoids2h7nJrQEY8ro6-zp4i9wbUB6BY
 
 == How It Works ==
 
@@ -58,6 +54,8 @@ The shortcode `[sf id=1 layout=1]` contains the slider ID and layout number.
 * **Widget Ready** – Use sliders in sidebar widgets
 * **Bootstrap 5 Dashboard** – Clean, modern admin interface
 
+**Free Plugin Demo:** [View Demo](https://wpfrank.com/demo/slider-factory-free-wordpress-plugin/)
+
 == Pro Version Features ==
 
 Upgrade to Slider Factory Pro for additional layouts and advanced features:
@@ -84,6 +82,10 @@ Upgrade to Slider Factory Pro for additional layouts and advanced features:
 * **Custom CSS** – Add your own styling for complete customization
 * **RTL Support** – Right-to-left language support
 * **Translation Ready** – Compatible with WPML and multilingual plugins
+
+**Pro Version Details:** [Learn More](https://wpfrank.com/wordpress-plugins/slider-factory-pro/)
+**Pro Version Demo:** [View Demo](https://wpfrank.com/demo/slider-factory-pro/)
+**Purchase Pro:** [Buy Now](https://wpfrank.com/account/signup/slider-factory-pro/)
 
 https://www.youtube.com/watch?v=H0_FnzsrEGc
 
@@ -162,6 +164,13 @@ This plugin is released under the GPL v2 or later license.
 12. Layout 12: Custom Slider – Build fully customizable sliders.
 
 == Changelog ==
+
+= 1.3.13 =
+* Layout 11 is not working on default theme: fixed
+* Dashboard button CSS changed #e52e00
+* Layout 11 CSS refactored to use Flexbox
+* Layout 11 compatibility issue with Block themes fixed
+* Performance issue with adding multiple images fixed
 
 = 1.3.12 =
 * Readme updated for WordPress.org guidelines compliance

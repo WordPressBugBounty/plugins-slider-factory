@@ -261,7 +261,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-13/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -280,7 +280,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-14/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -299,7 +299,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-15/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -318,7 +318,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-16/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -337,7 +337,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-17/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -356,7 +356,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-18/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -375,7 +375,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-19/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
@@ -394,7 +394,7 @@
 					<a type="button" href="https://wpfrank.com/demo/slider-factory-pro/layout-20/" target="_blank" id="slider-demo" class="slider-demo btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;">
 						<i class="fas fa-desktop"></i> <?php esc_html_e( 'Demo', 'slider-factory' ); ?>
 					</a>
-					<a class="btn btn-danger bg-gradient" style="background-color: #e76f51; border-color: #e76f51;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
+					<a class="btn btn-danger bg-gradient" style="background-color: #e52e00; border-color: #e52e00;" target="_blank" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">
 						<i class="fas fa-cart-plus"></i> <?php esc_html_e( 'Buy Pro', 'slider-factory' ); ?>
 					</a>
 				</div>
