@@ -1,126 +1,2272 @@
-#wpcontent {
-	padding-left: 0px !important;
+/* ==========================================================================
+   Slider Factory - Shared Design System (Clean & Minimal / Blue Accent)
+   - Clean & minimal premium: blue accent, 4-6px rounded corners,
+     generous spacing, subtle shadows. No gradients, no blue-purple.
+   - No !important flags: specificity is won via the natural cascade.
+   - Identical file shipped in Slider Factory Free and Slider Factory Pro so
+     both versions render the same admin UI (only feature scope differs).
+   ========================================================================== */
+
+:root {
+	/* Surfaces */
+	--sf-bg-panel: #f8fafc;       /* Slate 50 */
+	--sf-bg-card: #ffffff;
+	--sf-bg-dark: #0f172a;        /* Slate 900 */
+	--sf-bg-header: #1e293b;      /* Slate 800 */
+	--sf-bg-subheader: #334155;   /* Slate 700 */
+	--sf-bg-hover: #f1f5f9;       /* Slate 100 */
+
+	/* Text */
+	--sf-text-main: #1e293b;
+	--sf-text-muted: #64748b;
+	--sf-text-light: #ffffff;
+	--sf-text-dim: #94a3b8;
+
+	/* Borders */
+	--sf-border-color: #e2e8f0;   /* Slate 200 */
+	--sf-border-light: #e2e8f0;   /* Slate 200 */
+
+	/* Accent (Calypso Blue) */
+	--sf-accent: #267BA3;         /* Calypso 600 */
+	--sf-accent-hover: #236B8F;   /* Calypso 700 */
+	--sf-accent-bg: #F3F9FC;      /* Calypso 50 */
+	--sf-toggle-off: #cbd5e1;     /* Slate 300 — OFF track for toggle switches */
+
+	/* Status */
+	--sf-success: #267BA3;        --sf-success-hover: #236B8F;
+	--sf-danger:  #e11d48;        --sf-danger-hover:  #be123c;
+	--sf-warning: #d97706;        --sf-warning-hover: #b45309;
+	--sf-info:    #267BA3;        --sf-info-hover:    #236B8F;
+
+	/* Geometry */
+	--sf-radius-lg: 6px;          /* For card-like containers & panels */
+	--sf-radius: 4px;             /* For controls: buttons, input fields */
+	--sf-radius-sm: 3px;          /* For checkbox containers & tags */
+
+	/* Density */
+	--sf-control-h: 32px;
+	--sf-control-fs: 12px;
+	--sf-control-py: 4px;
+	--sf-control-px: 8px;
+	--sf-card-pad: 12px;
+	--sf-gap: 8px;
+
+	--sf-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--sf-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+	--sf-transition: 0.2s ease-in-out;
+
+	/* Shadows */
+	--sf-shadow-sm: 0 1px 3px 0 rgba(0,0,0,0.08), 0 1px 2px -1px rgba(0,0,0,0.04);
+	--sf-shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+	--sf-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
 }
 
-/* #wpfooter {
-	bottom: unset !important;
-} */
-
-/* dashboard CSS */
-.sf-panel {
-	background-color: #F3F3F3 !important;
+/* -------------------------------------------------------------------------
+   WP admin chrome — reclaim full width on our screens
+   NOTE: WP emits "<parent-slug>_page_<child-slug>" as the body class for
+   submenu pages (parent slug is "sf-slider-factory"), so the class is
+   "slider-factory_page_sf-manage-slider" — not the common
+   "admin_page_sf-manage-slider" pattern.
+   ------------------------------------------------------------------------- */
+body.toplevel_page_sf-slider-factory #wpcontent,
+body.slider-factory_page_sf-manage-slider #wpcontent {
+	padding-left: 0;
 }
 
-.sf-heading {
-	color: #FFFFFF !important;
+/* -------------------------------------------------------------------------
+   Dashboard / panel shell
+   ------------------------------------------------------------------------- */
+body.toplevel_page_sf-slider-factory .sf-panel,
+body.slider-factory_page_sf-manage-slider .sf-panel {
+	background-color: var(--sf-bg-panel);
+	padding: 20px;
+	font-family: var(--sf-font-sans);
+	color: var(--sf-text-main);
+	min-height: calc(100vh - 32px);
 }
 
-.sf-inner-box {
-	background-color: #FFFFFF !important;
+body.toplevel_page_sf-slider-factory .sf-panel .row,
+body.slider-factory_page_sf-manage-slider .sf-panel .row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	gap: 20px;
+	margin: 0;
 }
 
-
-/* dashboard slider panel CSS */
-.sf-panel-heading {
-	background-color: #6a040f;
-	color: #FFFFFF;
+body.toplevel_page_sf-slider-factory .sf-panel .row > .col-lg-8,
+body.slider-factory_page_sf-manage-slider .sf-panel .row > .col-lg-8 {
+	flex: 1 1 calc(100% - 360px);
+	width: calc(100% - 360px);
+	min-width: 0;
+	max-width: none;
 }
 
-.sf-panel-setting {
-	background-color: #FFFFFF;
+body.toplevel_page_sf-slider-factory .sf-panel .row > .col-lg-4,
+body.slider-factory_page_sf-manage-slider .sf-panel .row > .col-lg-4 {
+	flex: 0 0 340px;
+	width: 340px;
+	min-width: 340px;
+	max-width: 340px;
 }
 
-.sf-title {
-
+.sf-legacy-preview-card,
+.sf-preview-body {
+	overflow: hidden;
+	position: relative;
+	border-radius: 12px;
 }
 
-.sf-tooltip {
-	color: #000 !important;
+#sf-live-preview-iframe {
+	display: block;
+	max-height: 480px;
+	overflow: hidden;
 }
 
-.sf-slide-column {
-	cursor: all-scroll;
+/* -------------------------------------------------------------------------
+   Typography
+   ------------------------------------------------------------------------- */
+.sf-panel .sf-title {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--sf-bg-dark);
+	margin: 0;
+	padding-bottom: var(--sf-card-pad);
+	border-bottom: 2px solid var(--sf-bg-header);
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
 }
 
-/* Range bar color */
-input[type='range']::-webkit-slider-thumb {
-	background: #6a040f;
+.sf-panel .sf-title code {
+	background-color: var(--sf-accent-bg);
+	color: var(--sf-accent-hover);
+	font-family: var(--sf-font-mono);
+	font-size: 13px;
+	font-weight: 600;
+	padding: 3px 8px;
+	border-radius: var(--sf-radius-sm);
+	border: 1px solid rgba(22, 163, 74, 0.15);
 }
 
-
-/* Ribbon CSS Start */
-.box {
-  position: relative;
-
-  background: #EEE;
-}
-.ribbon {
-  position: absolute;
-  left: -5px; top: -5px;
-  z-index: 1;
-  overflow: hidden;
-  width: 75px; height: 75px;
-  text-align: right;
-}
-.ribbon span {
-  font-size: 12px;
-  font-weight: bold;
-  color: #FFF;
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 20px;
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  width: 100px;
-  display: block;
-  background: #79A70A;
-  background: linear-gradient(#79A70A 0%, #527007 100%);
-  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-  position: absolute;
-  top: 19px; left: -21px;
-}
-.ribbon span::before {
-  content: "";
-  position: absolute; left: 0px; top: 100%;
-  z-index: -1;
-  border-left: 3px solid #527007;
-  border-right: 3px solid transparent;
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid #527007;
-}
-.ribbon span::after {
-  content: "";
-  position: absolute; right: 0px; top: 100%;
-  z-index: -1;
-  border-left: 3px solid transparent;
-  border-right: 3px solid #527007;
-  border-bottom: 3px solid transparent;
-  border-top: 3px solid #527007;
-}
-/* Ribbon CSS End */
-
-
-/* Disabled Code CSS Start */
-.sf-title-disabled {
-	color: #ff6d6d !important;
+.sf-panel .sf-panel-heading {
+	background-color: var(--sf-bg-header);
+	color: var(--sf-text-light);
+	font-size: 13px;
+	font-weight: 600;
+	padding: 9px 14px;
+	margin: 0;
+	border-radius: var(--sf-radius);
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
 }
 
-.sf-tooltip-disabled {
-	color: #ff6d6d !important;
+.sf-panel .sf-heading {
+	color: var(--sf-text-light);
+	font-size: 16px;
+	font-weight: 600;
+}
+.sf-panel p.sf-heading {
+	font-size: 11px;
+	color: var(--sf-border-color);
 }
 
-a.sf-buypro-link {
-	font-size: 9px !important;
-	text-decoration: none !important;
-	outline: none !important;
-	color: white !important;
+/* -------------------------------------------------------------------------
+   Cards / boxes
+   ------------------------------------------------------------------------- */
+.sf-panel-card {
+	background-color: var(--sf-bg-card);
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+	margin-bottom: 16px;
+	overflow: hidden;
 }
 
-a.sf-buypro-link:hover {
-	color: yellow !important;
+/* Compact the heavy 24px Bootstrap `.p-4` utility down when used on our cards. */
+.sf-panel .sf-panel-card.p-4 { padding: var(--sf-card-pad); }
+
+.sf-panel-card .sf-card-title {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--sf-bg-dark);
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+	margin: 0;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--sf-border-light);
 }
 
-span.sf-pro-tag::before {
-	content: "PRO Feature";
+.sf-panel .sf-panel-setting {
+	background-color: var(--sf-bg-card);
+	border: 1px solid var(--sf-border-color);
+	padding: var(--sf-card-pad);
+	margin-bottom: 14px;
+	border-radius: var(--sf-radius-lg);
 }
-/* Disabled Code CSS End */
+
+.sf-panel .sf-inner-box {
+	background-color: var(--sf-bg-card);
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	transition: border-color var(--sf-transition), box-shadow var(--sf-transition);
+	margin-bottom: 12px;
+}
+.sf-panel .sf-inner-box:hover {
+	border-color: var(--sf-accent);
+	box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.07);
+}
+
+/* Ribbon (flat corner tag) */
+.sf-panel .box { position: relative; overflow: hidden; }
+.sf-panel .ribbon { position: absolute; top: 0; left: 0; z-index: 10; }
+.sf-panel .ribbon span {
+	font-size: 9px;
+	font-weight: 700;
+	color: var(--sf-text-light);
+	background-color: var(--sf-accent);
+	padding: 3px 7px;
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+}
+
+/* Tooltips / help text */
+.sf-panel .sf-tooltip,
+.sf-panel .form-text {
+	color: var(--sf-text-muted);
+	font-size: 11px;
+	margin-top: 4px;
+	line-height: 1.4;
+}
+
+/* Labels */
+.sf-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-text-muted);
+	margin-bottom: 4px;
+	display: block;
+}
+
+/* -------------------------------------------------------------------------
+   EDITOR HEADER — compact header bar with title + save + shortcode
+   ------------------------------------------------------------------------- */
+.sf-editor-header {
+	background-color: var(--sf-bg-card);
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	padding: 12px 16px;
+	box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.sf-editor-header-row {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 8px;
+}
+
+.sf-editor-header-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.sf-editor-header-actions {
+	flex-shrink: 0;
+}
+
+/* Inline title input inside the header */
+.sf-editor-title-field {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.sf-editor-title-field .sf-label {
+	flex-shrink: 0;
+	margin-bottom: 0;
+	width: 100px;
+}
+.sf-editor-title-field .form-control {
+	max-width: 360px;
+}
+
+/* Shortcode bar — inline below the title */
+.sf-shortcode-bar {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 12px;
+	padding-top: 12px;
+	border-top: 1px solid var(--sf-border-light);
+	flex-wrap: wrap;
+}
+.sf-shortcode-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-text-muted);
+	flex-shrink: 0;
+	width: 100px;
+}
+.sf-shortcode-input-group {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+.sf-shortcode-input-group .form-control {
+	max-width: 360px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	font-family: var(--sf-font-mono);
+	font-size: 12px;
+}
+.sf-shortcode-input-group .btn {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	flex-shrink: 0;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.sf-copied-inline {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-success);
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+/* -------------------------------------------------------------------------
+   Card header row — title left, actions right (for slides section)
+   ------------------------------------------------------------------------- */
+.sf-card-header-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--sf-border-light);
+}
+
+.sf-card-title-inline {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--sf-bg-dark);
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+}
+
+.sf-card-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-shrink: 0;
+}
+
+.sf-card-hint {
+	padding: 8px 16px;
+	font-size: 11px;
+	color: var(--sf-text-muted);
+	background-color: var(--sf-bg-panel);
+	border-bottom: 1px solid var(--sf-border-light);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+.sf-card-hint i { color: var(--sf-text-dim); }
+
+/* Layout badge inside card title */
+.sf-card-layout-badge {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--sf-accent);
+	background-color: var(--sf-accent-bg);
+	padding: 2px 8px;
+	border-radius: var(--sf-radius);
+	text-transform: none;
+	letter-spacing: 0;
+	margin-left: 8px;
+}
+
+/* -------------------------------------------------------------------------
+   Save card — sticky bottom CTA in sidebar
+   ------------------------------------------------------------------------- */
+.sf-save-card {
+	padding: 12px 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--sf-gap);
+}
+.sf-save-card .btn {
+	font-size: 13px;
+	font-weight: 600;
+	padding: 10px 16px;
+}
+
+.sf-spinner-wrap {
+	display: flex;
+	align-items: center;
+	gap: var(--sf-gap);
+}
+.sf-spinner-wrap.d-none {
+	display: none;
+}
+.sf-spinner-text {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-accent);
+}
+
+.sf-panel #sf-slider-process:not(.d-none) ~ #sf-save-slider-bottom {
+	display: none !important;
+}
+
+/* -------------------------------------------------------------------------
+   Form controls — compact
+   ------------------------------------------------------------------------- */
+.sf-panel input[type="text"].form-control,
+.sf-panel input[type="number"].form-control,
+.sf-panel input[type="email"].form-control,
+.sf-panel input[type="url"].form-control,
+.sf-panel select.form-select,
+.sf-panel textarea.form-control {
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius);
+	padding: var(--sf-control-py) var(--sf-control-px);
+	font-size: var(--sf-control-fs);
+	color: var(--sf-text-main);
+	background-color: var(--sf-bg-card);
+	box-shadow: none;
+	transition: border-color var(--sf-transition);
+	width: 100%;
+	height: var(--sf-control-h);
+	line-height: 1.4;
+}
+.sf-panel textarea.form-control {
+	min-height: 64px;
+	height: auto;
+	resize: vertical;
+}
+
+/* Small variant for slide card fields */
+.sf-panel .form-control-sm {
+	font-size: 12px;
+	height: 30px;
+	padding: var(--sf-control-py) var(--sf-control-px);
+}
+.sf-panel textarea.form-control-sm {
+	height: auto;
+	min-height: 48px;
+}
+
+.sf-panel input[type="text"].form-control:focus,
+.sf-panel input[type="number"].form-control:focus,
+.sf-panel select.form-select:focus,
+.sf-panel textarea.form-control:focus {
+	border-color: var(--sf-accent);
+	outline: none;
+	box-shadow: 0 0 0 2px var(--sf-accent-bg);
+}
+
+/* Settings field labels */
+.sf-panel .sf-settings-container .form-label.sf-title,
+.sf-panel .sf-settings-container h5.form-label.sf-title {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-text-main);
+	margin-bottom: 4px;
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+/* Range sliders */
+.sf-panel input[type='range'] {
+	width: 100%;
+	background: transparent;
+	appearance: none;
+	-webkit-appearance: none;
+	height: 18px;
+}
+.sf-panel input[type='range']:focus { outline: none; }
+.sf-panel input[type='range']::-webkit-slider-runnable-track {
+	height: 4px;
+	background: var(--sf-border-light);
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-sm);
+}
+.sf-panel input[type='range']::-webkit-slider-thumb {
+	height: 14px;
+	width: 14px;
+	border-radius: var(--sf-radius-sm);
+	background: var(--sf-accent);
+	cursor: pointer;
+	appearance: none;
+	-webkit-appearance: none;
+	margin-top: -6px;
+	border: 1px solid var(--sf-accent-hover);
+}
+.sf-panel input[type='range']::-moz-range-track {
+	height: 4px;
+	background: var(--sf-border-light);
+	border-radius: var(--sf-radius-sm);
+}
+.sf-panel input[type='range']::-moz-range-thumb {
+	height: 14px;
+	width: 14px;
+	border: 1px solid var(--sf-accent-hover);
+	background: var(--sf-accent);
+	border-radius: var(--sf-radius-sm);
+	cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------
+   Color pickers — swatch + hex badge unified row
+   HTML pattern: <p><input type="color"></p> <button id="...-value">hex</button> HEX
+   No PHP changes needed — CSS reshapes the existing elements.
+   ------------------------------------------------------------------------- */
+
+/* The <p> that wraps the native swatch — collapse it to inline */
+.sf-panel .mb-3 > p:has(input[type="color"]),
+.sf-panel .mb-3 > p.sf-has-color-input {
+	display: inline-flex;
+	align-items: center;
+	margin: 0 6px 0 0;
+	padding: 0;
+	vertical-align: middle;
+}
+
+/* Compact the native color swatch */
+.sf-panel input[type="color"] {
+	width: 32px;
+	height: var(--sf-control-h);
+	padding: 2px;
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius);
+	background-color: var(--sf-bg-card);
+	cursor: pointer;
+	appearance: none;
+	-webkit-appearance: none;
+	display: block;
+	transition: border-color var(--sf-transition), box-shadow var(--sf-transition);
+}
+.sf-panel input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+	border-radius: var(--sf-radius-sm);
+	overflow: hidden;
+}
+.sf-panel input[type="color"]::-webkit-color-swatch {
+	border: none;
+	border-radius: var(--sf-radius-sm);
+}
+.sf-panel input[type="color"]::-moz-color-swatch {
+	border: none;
+	border-radius: var(--sf-radius-sm);
+}
+.sf-panel input[type="color"]:hover,
+.sf-panel input[type="color"]:focus {
+	border-color: var(--sf-accent);
+	box-shadow: 0 0 0 2px var(--sf-accent-bg);
+	outline: none;
+}
+
+/* The hex badge button that shows the current value — inline, monospace pill */
+.sf-panel .mb-3 > button[id$="-value"] {
+	display: inline-flex;
+	align-items: center;
+	height: var(--sf-control-h);
+	padding: 0 10px;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1;
+	font-family: var(--sf-font-mono);
+	color: var(--sf-text-main);
+	background-color: var(--sf-bg-hover);
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius);
+	cursor: default;
+	vertical-align: middle;
+	margin-right: 6px;
+	min-width: 72px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	transition: background-color var(--sf-transition);
+}
+
+/* Disabled (Free — PRO-locked) color fields */
+.sf-panel input[type="color"]:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+.sf-panel input[type="color"]:disabled + button[id$="-value"],
+.sf-panel .mb-3 > button[id$="-value"]:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+/* Disabled / locked PRO fields */
+.sf-panel .sf-title-disabled { color: var(--sf-danger); }
+.sf-panel .sf-tooltip-disabled { color: var(--sf-danger); }
+.sf-panel a.sf-buypro-link {
+	font-size: 9px;
+	font-weight: 700;
+	color: var(--sf-text-light);
+	background-color: var(--sf-danger);
+	padding: 1px 5px;
+	text-decoration: none;
+	margin-left: 4px;
+	border-radius: var(--sf-radius-sm);
+}
+.sf-panel a.sf-buypro-link:hover { background-color: var(--sf-danger-hover); }
+.sf-panel span.sf-pro-tag::before { content: "PRO"; }
+
+/* -------------------------------------------------------------------------
+   Buttons — compact, unified sizes
+   ------------------------------------------------------------------------- */
+.sf-panel .btn {
+	border-radius: var(--sf-radius);
+	font-size: var(--sf-control-fs);
+	font-weight: 600;
+	padding: var(--sf-control-py) var(--sf-control-px);
+	min-height: var(--sf-control-h);
+	line-height: 1.3;
+	border: 1px solid transparent;
+	transition: background-color var(--sf-transition), border-color var(--sf-transition), color var(--sf-transition), box-shadow var(--sf-transition);
+	box-shadow: none;
+	background-image: none; /* force flat — strips Bootstrap .bg-gradient */
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	vertical-align: middle;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.sf-panel .btn i { font-size: 12px; }
+.sf-panel .btn-lg { padding: 8px 16px; min-height: 40px; font-size: 14px; }
+.sf-panel .btn-sm { padding: 4px 10px; min-height: 28px; font-size: 12px; }
+
+/* Subtle elevation on primary CTAs */
+.sf-panel .btn-success:hover,
+.sf-panel .btn-primary:hover,
+.sf-panel .btn-danger:hover { box-shadow: 0 2px 4px rgba(15, 23, 42, 0.08); }
+
+.sf-panel .btn-success { background-color: var(--sf-success); border-color: var(--sf-success); color: var(--sf-text-light); }
+.sf-panel .btn-success:hover, .sf-panel .btn-success:focus { background-color: var(--sf-success-hover); border-color: var(--sf-success-hover); }
+
+.sf-panel .btn-danger { background-color: var(--sf-danger); border-color: var(--sf-danger); color: var(--sf-text-light); }
+.sf-panel .btn-danger:hover, .sf-panel .btn-danger:focus { background-color: var(--sf-danger-hover); border-color: var(--sf-danger-hover); }
+
+.sf-panel .btn-warning { background-color: var(--sf-warning); border-color: var(--sf-warning); color: var(--sf-text-light); }
+.sf-panel .btn-warning:hover, .sf-panel .btn-warning:focus { background-color: var(--sf-warning-hover); border-color: var(--sf-warning-hover); }
+
+.sf-panel .btn-info { background-color: var(--sf-bg-subheader); border-color: var(--sf-bg-subheader); color: var(--sf-text-light); }
+.sf-panel .btn-info:hover, .sf-panel .btn-info:focus { background-color: var(--sf-bg-dark); border-color: var(--sf-bg-dark); }
+
+.sf-panel .btn-primary { background-color: var(--sf-info); border-color: var(--sf-info); color: var(--sf-text-light); }
+.sf-panel .btn-primary:hover, .sf-panel .btn-primary:focus { background-color: var(--sf-info-hover); border-color: var(--sf-info-hover); }
+
+.sf-panel .btn-secondary { background-color: var(--sf-bg-subheader); border-color: var(--sf-bg-subheader); color: var(--sf-text-light); }
+.sf-panel .btn-secondary:hover, .sf-panel .btn-secondary:focus { background-color: var(--sf-bg-dark); border-color: var(--sf-bg-dark); }
+
+/* ==========================================================================
+   Toggle controls — two flavors sharing one Bootstrap btn-group markup:
+   - ON/OFF groups (radio value=true/false) → iOS-style toggle switch
+   - Multi-option groups (Design Preset, etc.) → segmented control
+   No HTML/JS changes: :has() + sibling selectors handle everything.
+   ========================================================================== */
+
+/* --- Base container (shared) --- */
+.sf-panel .btn-group {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    border: none;
+}
+
+/* Hide native checkboxes/radios inside button groups to prevent overlap/leakage */
+.sf-panel .btn-group .btn-check {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    pointer-events: none !important;
+}
+
+/* ===========================================================
+   SEGMENTED CONTROL (default, for multi-option groups)
+   =========================================================== */
+.sf-panel .btn-group:not(:has(> input[value="true"])) {
+    background-color: var(--sf-bg-panel);
+    padding: 3px;
+    border-radius: var(--sf-radius);
+    border: 1px solid var(--sf-border-color);
+    gap: 4px;
+}
+
+.sf-panel .btn-group:not(:has(> input[value="true"])) .btn-check + .btn-outline-secondary {
+    background-color: transparent;
+    border: none;
+    color: var(--sf-text-muted);
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 10px;
+    min-height: 24px;
+    border-radius: var(--sf-radius-sm);
+    transition: var(--sf-transition);
+    cursor: pointer;
+    line-height: 1.3;
+}
+
+.sf-panel .btn-group:not(:has(> input[value="true"])) .btn-check + .btn-outline-secondary:hover {
+    background-color: rgba(15, 23, 42, 0.04);
+    color: var(--sf-text-main);
+}
+
+.sf-panel .btn-group:not(:has(> input[value="true"])) .btn-check:checked + .btn-outline-secondary {
+    background-color: var(--sf-accent);
+    color: var(--sf-text-light);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.sf-panel .btn-group:not(:has(> input[value="true"])) .btn-check:disabled + .btn-outline-secondary {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ===========================================================
+   TOGGLE SWITCH (ON/OFF groups — detected via :has(value="true"))
+   ===========================================================
+   Markup per group: [radio value="true"][label ON][radio value="false"][label OFF]
+   Labels are partitioned into left and right half clickable zones.
+   The track and sliding thumb are drawn from the container. */
+
+.sf-panel .btn-group:has(> input[value="true"]) {
+    width: 48px;
+    height: 24px;
+    padding: 0;
+    background-color: var(--sf-toggle-off);
+    border-radius: 999px;
+    position: relative;
+    display: inline-flex;
+    border: none;
+    overflow: hidden;
+	transition: background-color var(--sf-transition);
+}
+/* ON state: success track color when value="true" is checked */
+.sf-panel .btn-group:has(> input[value="true"]:checked) {
+    background-color: var(--sf-success);
+}
+
+/* Labels become transparent half-width click zones */
+.sf-panel .btn-group:has(> input[value="true"]) .btn-outline-secondary {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 24px; /* Half of 48px track */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    cursor: pointer;
+    z-index: 2;
+}
+/* ON label (first) on the left */
+.sf-panel .btn-group:has(> input[value="true"]) .btn-outline-secondary:first-of-type {
+    left: 0;
+}
+/* OFF label (second) on the right */
+.sf-panel .btn-group:has(> input[value="true"]) .btn-outline-secondary:last-of-type {
+    right: 0;
+    left: auto;
+}
+
+/* Sliding thumb (drawn from the container's ::before) */
+.sf-panel .btn-group:has(> input[value="true"])::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--sf-bg-card);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
+}
+/* ON state → slide thumb to the right */
+.sf-panel .btn-group:has(> input[value="true"]:checked)::before {
+    transform: translateX(24px);
+}
+
+/* Ensure the inactive toggle label covers the entire track for a larger click target */
+.sf-panel .btn-group:has(> input[value="true"]:checked) .btn-outline-secondary:last-of-type {
+    width: 100%;
+    left: 0;
+    right: auto;
+    z-index: 3;
+}
+.sf-panel .btn-group:has(> input[value="false"]:checked) .btn-outline-secondary:first-of-type {
+    width: 100%;
+    left: 0;
+    right: auto;
+    z-index: 3;
+}
+
+/* Standalone outline-secondary buttons */
+.sf-panel .btn-outline-secondary {
+	background-color: var(--sf-bg-card);
+	border: 1px solid var(--sf-border-color);
+	color: var(--sf-text-main);
+}
+.sf-panel .btn-outline-secondary:hover,
+.sf-panel .btn-outline-secondary:focus {
+	background-color: var(--sf-bg-hover);
+	border-color: var(--sf-text-muted);
+	color: var(--sf-text-main);
+}
+
+/* Outline danger — premium destructive secondary action */
+.sf-panel .btn-outline-danger {
+	background-color: transparent;
+	border-color: var(--sf-danger);
+	color: var(--sf-danger);
+}
+.sf-panel .btn-outline-danger:hover,
+.sf-panel .btn-outline-danger:focus {
+	background-color: var(--sf-danger);
+	border-color: var(--sf-danger);
+	color: var(--sf-text-light);
+}
+
+/* Blue spinner for save state */
+.sf-panel .sf-spinner-primary {
+	color: var(--sf-accent);
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+/* -------------------------------------------------------------------------
+   Slider list action buttons (standalone, work inside & outside .sf-panel)
+   ------------------------------------------------------------------------- */
+.sf-btn-clone, .sf-btn-edit, .sf-btn-delete {
+	font-size: 11px;
+	font-weight: 600;
+	padding: var(--sf-control-py) var(--sf-control-px);
+	min-height: 26px;
+	border-radius: var(--sf-radius);
+	border: 1px solid transparent;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	color: var(--sf-text-light);
+	transition: background-color var(--sf-transition), border-color var(--sf-transition);
+	text-decoration: none;
+	line-height: 1.3;
+}
+.sf-btn-clone { background-color: var(--sf-bg-subheader); border-color: var(--sf-bg-subheader); }
+.sf-btn-clone:hover, .sf-btn-clone:focus { background-color: var(--sf-bg-dark); border-color: var(--sf-bg-dark); color: var(--sf-text-light); }
+.sf-btn-edit { background-color: var(--sf-info); border-color: var(--sf-info); }
+.sf-btn-edit:hover, .sf-btn-edit:focus { background-color: var(--sf-info-hover); border-color: var(--sf-info-hover); color: var(--sf-text-light); }
+.sf-btn-delete { background-color: var(--sf-danger); border-color: var(--sf-danger); }
+.sf-btn-delete:hover, .sf-btn-delete:focus { background-color: var(--sf-danger-hover); border-color: var(--sf-danger-hover); color: var(--sf-text-light); }
+
+/* Tables — slider list & shortcode modal
+   ------------------------------------------------------------------------- */
+.sf-panel table.table {
+	background-color: var(--sf-bg-card);
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	font-size: 12px;
+	overflow: hidden;
+}
+
+/* Override Bootstrap .table-dark — keep our Slate 800 header, not Bootstrap black */
+.sf-panel table.table thead,
+.sf-panel table.table thead.table-dark {
+	background-color: var(--sf-bg-header);
+	color: var(--sf-text-light);
+}
+.sf-panel table.table tfoot,
+.sf-panel table.table tfoot.table-dark {
+	background-color: var(--sf-bg-subheader);
+	color: var(--sf-text-light);
+}
+
+/* Per-cell: Bootstrap .table-dark sets color on <td>/<th> too — reset it */
+.sf-panel table.table thead.table-dark th,
+.sf-panel table.table tfoot.table-dark th,
+.sf-panel table.table tfoot.table-dark td {
+	border-color: rgba(255, 255, 255, 0.08);
+	color: var(--sf-text-light);
+	background-color: transparent;
+}
+
+.sf-panel table.table th,
+.sf-panel table.table td {
+	padding: 6px 12px;
+	font-size: 12px;
+	border: 1px solid var(--sf-border-light);
+	vertical-align: middle;
+}
+.sf-panel table.table thead th { font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 10px; }
+.sf-panel table.table tfoot th { font-weight: 600; font-size: 11px; }
+.sf-panel table.table tbody tr:hover td { background-color: var(--sf-bg-hover); }
+
+/* Column widths (replaces inline styles in manage-slider.php) */
+table.table th.sf-col-shortcode { width: 40%; }
+table.table th.sf-col-action { width: 22%; }
+table.table th.sf-col-check { width: 8%; }
+
+/* Shortcode input group inside table */
+.sf-panel .sf-shortcode-group { max-width: 320px; }
+.sf-panel .input-group-sm > .form-control,
+.sf-panel .input-group-sm > .btn { height: var(--sf-control-h); font-size: 12px; }
+.sf-panel .input-group-sm > .btn { padding: 0 10px; }
+.sf-panel .input-group {
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+	max-width: 100%;
+}
+.sf-panel .input-group .form-control {
+	flex: 1;
+	min-width: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	font-family: var(--sf-font-mono);
+	font-size: 11px;
+	height: var(--sf-control-h);
+}
+.sf-panel .input-group .btn {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	height: var(--sf-control-h);
+	padding: 0 10px;
+	margin-left: -1px;
+}
+
+/* "Copied" notification — replace Bootstrap alert-success with design-system style */
+.sf-copied-small,
+.sf-copied-note {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--sf-accent);
+	background-color: var(--sf-accent-bg);
+	border: 1px solid rgba(38, 123, 163, 0.2);
+	border-radius: var(--sf-radius-sm);
+	padding: 3px 8px;
+	max-width: 160px;
+	text-align: center;
+}
+
+/* Upgrade-to-Pro card — compact, sidebar-friendly */
+.sf-panel .sf-upgrade-card {
+	background: linear-gradient(180deg, var(--sf-accent-bg) 0%, var(--sf-bg-card) 100%);
+	border-color: rgba(38, 123, 163, 0.15);
+}
+.sf-upgrade-inner {
+	padding: 16px;
+	text-align: center;
+}
+.sf-panel .sf-upgrade-badge {
+	width: 32px; height: 32px;
+	border-radius: 50%;
+	background: var(--sf-accent);
+	color: var(--sf-text-light);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	margin-bottom: 8px;
+	box-shadow: 0 2px 6px rgba(38, 123, 163, 0.25);
+}
+.sf-upgrade-text {
+	font-size: 12px;
+	color: var(--sf-text-muted);
+	line-height: 1.5;
+	margin-bottom: 12px;
+}
+
+/* -------------------------------------------------------------------------
+   Settings container — compact, decluttered
+   ------------------------------------------------------------------------- */
+.sf-panel .sf-settings-container {
+	max-height: 62vh;
+	overflow-y: auto;
+	padding: 16px;
+}
+.sf-panel .sf-settings-container::-webkit-scrollbar { width: 6px; }
+.sf-panel .sf-settings-container::-webkit-scrollbar-track { background: var(--sf-bg-panel); }
+.sf-panel .sf-settings-container::-webkit-scrollbar-thumb { background: var(--sf-border-color); border-radius: 3px; }
+
+.sf-panel .sf-settings-container .sf-panel-setting {
+	border: none;
+	background: transparent;
+	padding: 0;
+	margin-bottom: 0;
+}
+.sf-panel .sf-settings-container .mb-3 {
+	margin-bottom: 12px;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+.sf-panel .sf-settings-container .mb-3:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.sf-panel .sf-settings-container .btn-group { flex-wrap: wrap; gap: 4px; }
+
+/* Hide help text on PRO-disabled fields to reduce clutter */
+.sf-panel .sf-settings-container .sf-tooltip-disabled { display: none; }
+
+/* PRO-disabled fields — lighter, more compact */
+.sf-panel .sf-settings-container .sf-title-disabled {
+	color: var(--sf-text-dim);
+	font-size: 11px;
+}
+.sf-panel .sf-settings-container .mb-3:has(.sf-title-disabled),
+.sf-panel .sf-settings-container .mb-3.sf-has-disabled {
+	padding-bottom: 6px;
+	margin-bottom: 6px;
+}
+
+/* Collapsible PRO features section */
+.sf-pro-section-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 0;
+	margin: 12px 0 8px;
+	border-top: 1px solid var(--sf-border-light);
+	cursor: pointer;
+	user-select: none;
+}
+.sf-pro-section-toggle span {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--sf-text-dim);
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+}
+.sf-pro-section-toggle i {
+	font-size: 10px;
+	color: var(--sf-text-dim);
+	transition: transform var(--sf-transition);
+}
+.sf-pro-section-toggle.is-open i { transform: rotate(180deg); }
+
+.sf-pro-section-body {
+	display: none;
+	opacity: 0.6;
+}
+.sf-pro-section-body.is-open {
+	display: block;
+}
+
+/* -------------------------------------------------------------------------
+   SLIDE CARDS — sortable upload area with drag handle
+   ------------------------------------------------------------------------- */
+.sf-panel .sf-slides {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+	gap: 12px;
+	padding: 16px;
+	border: 1px dashed var(--sf-border-color);
+	background-color: var(--sf-bg-panel);
+	border-radius: var(--sf-radius-lg);
+	min-height: 150px;
+	transition: border-color var(--sf-transition);
+}
+.sf-panel .sf-slides:hover { border-color: var(--sf-text-muted); }
+
+/* Sortable placeholder */
+.sf-slide-placeholder {
+	background-color: var(--sf-bg-hover);
+	border: 1px dashed var(--sf-accent);
+	border-radius: var(--sf-radius-lg);
+	aspect-ratio: 1 / 1;
+	opacity: 0.5;
+}
+
+/* The wrapper that hosts the card and hidden fields */
+.sf-slide-card-wrapper {
+	position: relative;
+	box-sizing: border-box;
+}
+
+/* The slide tile itself */
+.sf-slide-card {
+	position: relative;
+	display: block;
+	aspect-ratio: 1 / 1;
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	overflow: hidden;
+	background-color: var(--sf-bg-card);
+	box-shadow: var(--sf-shadow-sm);
+	transition: border-color var(--sf-transition), box-shadow var(--sf-transition), transform var(--sf-transition);
+	cursor: grab;
+}
+.sf-slide-card:hover {
+	border-color: var(--sf-accent);
+	box-shadow: var(--sf-shadow-md);
+	transform: translateY(-1px);
+}
+.sf-slide-card:active { cursor: grabbing; }
+
+/* Cover image */
+.sf-slide-card-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	pointer-events: none;
+}
+
+/* Top overlay row: drag grip (left) + index badge (right) */
+.sf-slide-card-top {
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 6px;
+	z-index: 2;
+	opacity: 0;
+	transition: opacity var(--sf-transition);
+}
+.sf-slide-card:hover .sf-slide-card-top,
+.sf-slide-card.is-dragging .sf-slide-card-top { opacity: 1; }
+
+.sf-slide-card-grip {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	background-color: rgba(26, 26, 26, 0.72);
+	color: var(--sf-text-light);
+	border-radius: var(--sf-radius-sm);
+	font-size: 11px;
+	cursor: grab;
+}
+.sf-slide-card-grip:active { cursor: grabbing; }
+
+.sf-slide-card-index {
+	display: inline-flex;
+	align-items: center;
+	min-width: 24px;
+	height: 24px;
+	padding: 0 6px;
+	background-color: rgba(26, 26, 26, 0.72);
+	color: var(--sf-text-light);
+	border-radius: var(--sf-radius-sm);
+	font-size: 10px;
+	font-weight: 700;
+	font-family: var(--sf-font-mono);
+}
+
+/* Bottom overlay row: edit + delete actions */
+.sf-slide-card-actions {
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+	padding: 8px;
+	z-index: 2;
+	opacity: 0;
+	transform: translateY(4px);
+	transition: opacity var(--sf-transition), transform var(--sf-transition);
+}
+.sf-slide-card:hover .sf-slide-card-actions,
+.sf-slide-card.is-dragging .sf-slide-card-actions {
+	opacity: 1;
+	transform: translateY(0);
+}
+.sf-slide-card-act {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	padding: var(--sf-control-py) var(--sf-control-px);
+	font-size: 11px;
+	font-weight: 600;
+	border-radius: var(--sf-radius);
+	border: none;
+	cursor: pointer;
+	transition: background-color var(--sf-transition);
+}
+.sf-slide-card-act i { font-size: 10px; }
+.sf-slide-card-act.sf-slide-edit {
+	background-color: var(--sf-accent);
+	color: var(--sf-text-light);
+}
+.sf-slide-card-act.sf-slide-edit:hover { background-color: var(--sf-accent-hover); }
+.sf-slide-card-act.sf-slide-del {
+	background-color: var(--sf-danger);
+	color: var(--sf-text-light);
+}
+.sf-slide-card-act.sf-slide-del:hover { background-color: var(--sf-danger-hover); }
+
+/* Subtle gradient so the bottom actions read on any image */
+.sf-slide-card::after {
+	content: "";
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	height: 45%;
+	background: linear-gradient(to top, rgba(26, 26, 26, 0.45), rgba(26, 26, 26, 0));
+	pointer-events: none;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity var(--sf-transition);
+}
+.sf-slide-card:hover::after { opacity: 1; }
+
+/* Sortable dragging state */
+.sf-slide-card.ui-sortable-helper {
+	box-shadow: var(--sf-shadow-lg);
+	transform: rotate(1deg);
+	cursor: grabbing;
+}
+
+/* Hidden container holding the real form inputs (kept for save serialization) */
+.sf-slide-fields-hidden { display: none; }
+
+/* -------------------------------------------------------------------------
+   SLIDE EDIT MODAL
+   ------------------------------------------------------------------------- */
+.sf-slide-modal-preview {
+	width: 100%;
+	max-height: 200px;
+	object-fit: cover;
+	border-radius: var(--sf-radius-lg);
+	border: 1px solid var(--sf-border-color);
+	margin-bottom: 12px;
+	background-color: var(--sf-bg-panel);
+}
+#sfSlideModal .modal-dialog { max-width: 500px; }
+#sfSlideModal .modal-content {
+	border-radius: var(--sf-radius-lg);
+	border: 1px solid var(--sf-border-color);
+	box-shadow: var(--sf-shadow-lg);
+}
+#sfSlideModal .modal-header {
+	background-color: var(--sf-bg-dark);
+	color: var(--sf-text-light);
+	border-radius: var(--sf-radius-lg) var(--sf-radius-lg) 0 0;
+	border-bottom: none;
+	padding: 12px 16px;
+}
+#sfSlideModal .modal-header .modal-title { font-size: 14px; font-weight: 700; }
+#sfSlideModal .modal-header .btn-close { filter: invert(1) grayscale(1) brightness(2); }
+#sfSlideModal .modal-body { padding: 16px; background-color: var(--sf-bg-card); }
+#sfSlideModal .sf-slide-modal-field { margin-bottom: 10px; }
+#sfSlideModal .sf-slide-modal-field:last-child { margin-bottom: 0; }
+#sfSlideModal .sf-slide-modal-field label {
+	display: block;
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--sf-text-muted);
+	margin-bottom: 4px;
+}
+#sfSlideModal .modal-footer {
+	background-color: var(--sf-bg-hover);
+	border-top: 1px solid var(--sf-border-light);
+	border-radius: 0 0 var(--sf-radius-lg) var(--sf-radius-lg);
+	padding: 10px 16px;
+}
+
+/* -------------------------------------------------------------------------
+   Accordion Layout Grouping Styles
+   ------------------------------------------------------------------------- */
+.sf-sections-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sf-gap);
+}
+.sf-section {
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	overflow: hidden;
+	background-color: var(--sf-bg-card);
+}
+.sf-section-header {
+	padding: 10px 14px;
+	background-color: var(--sf-bg-panel);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	user-select: none;
+	transition: background-color var(--sf-transition);
+}
+.sf-section-header:hover {
+	background-color: var(--sf-bg-hover);
+}
+.sf-section-title {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-text-main);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--sf-gap);
+}
+.sf-section-title i {
+	color: var(--sf-accent);
+	font-size: 13px;
+	width: 16px;
+	text-align: center;
+}
+.sf-section-meta {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.sf-section-count {
+	display: none !important;
+}
+.sf-section-chevron {
+	font-size: 11px;
+	color: var(--sf-text-muted);
+	transition: transform var(--sf-transition);
+}
+.sf-section.is-open .sf-section-chevron {
+	transform: rotate(180deg);
+}
+.sf-section-body {
+	display: none;
+	padding: 14px;
+	border-top: 1px solid var(--sf-border-light);
+}
+.sf-section.is-open .sf-section-body {
+	display: block;
+}
+
+/* -------------------------------------------------------------------------
+   Bootstrap accordion overrides
+   ------------------------------------------------------------------------- */
+.sf-panel .accordion {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sf-gap);
+}
+.sf-panel .accordion-item {
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	overflow: hidden;
+	background-color: var(--sf-bg-card);
+}
+.sf-panel .accordion-button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	color: var(--sf-text-main);
+	background-color: var(--sf-bg-panel);
+	font-weight: 600;
+	font-size: 12px;
+	padding: 10px 14px;
+	border: none;
+	box-shadow: none;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color var(--sf-transition);
+}
+.sf-panel .accordion-button:hover {
+	background-color: var(--sf-bg-hover);
+}
+.sf-panel .accordion-button:focus { box-shadow: none; }
+.sf-panel .accordion-button::after {
+	flex-shrink: 0;
+	width: 1.25rem;
+	height: 1.25rem;
+	margin-left: auto;
+	content: "";
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2364748b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%e");
+	background-repeat: no-repeat;
+	background-size: 1.25rem;
+	transition: transform var(--sf-transition);
+}
+.sf-panel .accordion-button:not(.collapsed)::after {
+	transform: rotate(-180deg);
+}
+.sf-panel .accordion-collapse.collapse:not(.show) {
+	display: none;
+}
+.sf-panel .accordion-body {
+	padding: 14px;
+	border-top: 1px solid var(--sf-border-light);
+}
+
+/* -------------------------------------------------------------------------
+   Modal
+   ------------------------------------------------------------------------- */
+.modal-content { border-radius: var(--sf-radius-lg); border: 1px solid var(--sf-border-color); box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.16); }
+.modal-header { background-color: var(--sf-bg-header); color: var(--sf-text-light); border-bottom: 1px solid var(--sf-border-color); padding: 14px 20px; }
+.modal-header .modal-title { font-weight: 600; font-size: 14px; }
+.modal-header .btn-close { filter: invert(1); opacity: 0.85; }
+.modal-body { padding: 20px; background-color: var(--sf-bg-panel); }
+.modal-header #sf-search-shortcode { margin: 0 auto; max-width: 220px; }
+
+/* -------------------------------------------------------------------------
+   Empty state
+   ------------------------------------------------------------------------- */
+.sf-empty-state {
+	padding: 56px 32px;
+	text-align: center;
+	background: var(--sf-bg-card);
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	margin: 20px 0;
+}
+.sf-empty-state-icon { font-size: 48px; color: var(--sf-text-dim); margin-bottom: 18px; }
+.sf-empty-state-title { font-size: 16px; font-weight: 700; color: var(--sf-bg-dark); margin-bottom: 8px; }
+.sf-empty-state-desc { font-size: 13px; color: var(--sf-text-muted); margin-bottom: 22px; max-width: 400px; margin-left: auto; margin-right: auto; }
+
+/* -------------------------------------------------------------------------
+   Layout showcase grid (cards stretch equal)
+   ------------------------------------------------------------------------- */
+.sf-panel .row > [class*="col-"] { display: flex; flex-direction: column; }
+.sf-panel .row .sf-inner-box { display: flex; flex-direction: column; justify-content: space-between; height: calc(100% - 12px); }
+
+/* Equal-width action button row inside a layout card */
+.sf-panel .sf-inner-box div.p-3 { display: flex; gap: 6px; justify-content: space-between; padding: 10px 11px; }
+.sf-panel .sf-inner-box div.p-3 .btn,
+.sf-panel .sf-inner-box div.p-3 a.btn {
+	flex: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 6px 8px;
+	font-size: 11px;
+	font-weight: 600;
+	border-radius: var(--sf-radius);
+	text-decoration: none;
+	white-space: nowrap;
+	background: var(--sf-bg-card);
+	color: var(--sf-text-main);
+	border: 1px solid var(--sf-border-color);
+	transition: background-color var(--sf-transition), border-color var(--sf-transition), color var(--sf-transition);
+}
+.sf-panel .sf-inner-box div.p-3 .btn:hover,
+.sf-panel .sf-inner-box div.p-3 a.btn:hover { background-color: var(--sf-bg-hover); border-color: var(--sf-text-muted); }
+
+/* Info & Demo buttons = neutral */
+.sf-panel .sf-inner-box div.p-3 .slider-info,
+.sf-panel .sf-inner-box div.p-3 .slider-demo { background: var(--sf-bg-panel); border-color: var(--sf-border-color); color: var(--sf-text-main); }
+
+/* Create action = accent blue */
+.sf-panel .sf-inner-box div.p-3 a.btn:not(.slider-demo):not(.slider-info) { background: var(--sf-accent); color: var(--sf-text-light); border-color: var(--sf-accent); }
+.sf-panel .sf-inner-box div.p-3 a.btn:not(.slider-demo):not(.slider-info):hover { background: var(--sf-accent-hover); border-color: var(--sf-accent-hover); color: var(--sf-text-light); }
+
+/* Buy Pro CTA inside card = danger red */
+.sf-panel .sf-inner-box div.p-3 a.btn[href*="slider-factory-pro"] { background: var(--sf-danger); color: var(--sf-text-light); border-color: var(--sf-danger); }
+.sf-panel .sf-inner-box div.p-3 a.btn[href*="slider-factory-pro"]:hover { background: var(--sf-danger-hover); border-color: var(--sf-danger-hover); }
+
+/* Header "All Slider Shortcode" CTA */
+.sf-panel button[data-bs-target="#sf-sliders"] {
+	background: var(--sf-accent);
+	color: var(--sf-text-light);
+	border: 1px solid var(--sf-accent);
+	border-radius: var(--sf-radius);
+	font-size: 12px;
+	font-weight: 700;
+	padding: 8px 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+	transition: background-color var(--sf-transition), border-color var(--sf-transition);
+}
+.sf-panel button[data-bs-target="#sf-sliders"]:hover { background-color: var(--sf-accent-hover); border-color: var(--sf-accent-hover); }
+
+/* Animated layout previews now live in the React bundle
+   (admin/react-dashboard/src/preview.css) and are shipped via
+   admin/assets/dist/dashboard.css. They are intentionally NOT defined here so
+   the builder pages don't carry dead CSS for a dashboard-only surface. */
+
+/* =========================================================================
+   BOOTSTRAP REPLACEMENT GRID, UTILITIES & MODAL STYLES (No Dependency)
+   ========================================================================= */
+
+/* Scoped Grid System */
+.sf-panel .row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	margin-left: -10px;
+}
+.sf-panel .col-lg-8,
+.sf-panel .col-lg-4,
+.sf-panel .col-md-12,
+.sf-panel .col-md-6 {
+	position: relative;
+	width: 100%;
+	padding-right: 10px;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+	.sf-panel .col-md-6 {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+}
+
+@media (min-width: 992px) {
+	.sf-panel .col-lg-8 {
+		flex: 0 0 66.66667%;
+		max-width: 66.66667%;
+	}
+	.sf-panel .col-lg-4 {
+		flex: 0 0 33.33333%;
+		max-width: 33.33333%;
+	}
+}
+
+/* Margin and Spacing Helpers */
+.sf-panel .mb-0 { margin-bottom: 0 !important; }
+.sf-panel .mb-3 { margin-bottom: 1rem !important; }
+.sf-panel .mb-4 { margin-bottom: 1.5rem !important; }
+.sf-panel .mt-1 { margin-top: 0.25rem !important; }
+.sf-panel .mt-3 { margin-top: 1rem !important; }
+.sf-panel .p-0 { padding: 0 !important; }
+.sf-panel .p-4 { padding: 1.5rem !important; }
+.sf-panel .py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+.sf-panel .px-2 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+.sf-panel .px-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+.sf-panel .m-3 { margin: 1rem !important; }
+
+/* Display Helpers */
+.sf-panel .d-none, .sf-panel.d-none { display: none !important; }
+.sf-panel .d-flex { display: flex !important; }
+.sf-panel .align-middle { vertical-align: middle !important; }
+.sf-panel .gap-1 { gap: 0.25rem !important; }
+.sf-panel .w-75 { width: 75% !important; }
+.sf-panel .w-100 { width: 100% !important; }
+.sf-panel .visually-hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+/* Loading state spinner */
+.sf-panel .spinner-grow {
+	display: inline-block;
+	width: 1.2rem;
+	height: 1.2rem;
+	vertical-align: text-bottom;
+	background-color: currentColor;
+	border-radius: 50%;
+	opacity: 0;
+	animation: sf-spinner-grow .75s linear infinite;
+}
+@keyframes sf-spinner-grow {
+	0% { transform: scale(0); }
+	50% { opacity: 1; transform: none; }
+}
+
+/* Custom Modal Overlay (replacing Bootstrap Modal JS/CSS) */
+.sf-panel #sfSlideModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(15, 23, 42, 0.6); /* dark slate semi-transparent backdrop */
+	backdrop-filter: blur(4px);
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.sf-panel #sfSlideModal.sf-modal-open {
+	display: flex;
+}
+
+.sf-panel #sfSlideModal .modal-dialog {
+	width: 100%;
+	max-width: 500px;
+	margin: 0;
+}
+
+.sf-panel #sfSlideModal .modal-content {
+	background-color: var(--sf-bg-card);
+	border-radius: var(--sf-radius-lg);
+	border: 1px solid var(--sf-border-color);
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.sf-panel #sfSlideModal .modal-header {
+	background-color: var(--sf-accent);
+	color: var(--sf-text-light);
+	padding: 12px 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg) var(--sf-radius-lg) 0 0;
+}
+
+.sf-panel #sfSlideModal .modal-header .modal-title {
+	font-weight: 600;
+	font-size: 14px;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: var(--sf-gap);
+	color: var(--sf-text-light);
+}
+
+.sf-panel #sfSlideModal .modal-header .btn-close {
+	background: none !important;
+	background-image: none !important;
+	border: none !important;
+	color: var(--sf-text-light) !important;
+	filter: none !important;
+	font-size: 16px !important;
+	width: auto !important;
+	height: auto !important;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: opacity var(--sf-transition);
+	padding: 0 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	line-height: 1 !important;
+	box-shadow: none !important;
+}
+.sf-panel #sfSlideModal .modal-header .btn-close i {
+	color: var(--sf-text-light) !important;
+}
+
+.sf-panel #sfSlideModal .modal-header .btn-close:hover {
+	opacity: 1;
+}
+
+.sf-panel #sfSlideModal .modal-body {
+	padding: 16px;
+	background-color: var(--sf-bg-card);
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.sf-panel #sfSlideModal .modal-footer {
+	padding: 10px 16px;
+	background-color: var(--sf-bg-hover);
+	border-top: 1px solid var(--sf-border-light);
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	border-radius: 0 0 var(--sf-radius-lg) var(--sf-radius-lg);
+}
+
+/* Ensure form-select dropdowns have clean standard arrow styles */
+.sf-panel select.form-select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23475569' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	background-size: 12px 12px;
+	padding-right: 28px !important;
+}
+
+/* -------------------------------------------------------------------------
+   Slider Card Rows Layout (All Sliders List)
+   ------------------------------------------------------------------------- */
+.sf-panel .sf-slider-list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 16px 0;
+	padding: 16px;
+}
+
+.sf-panel .sf-slider-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px;
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-lg);
+	background-color: var(--sf-bg-card);
+	transition: background-color var(--sf-transition), border-color var(--sf-transition);
+}
+
+.sf-panel .sf-slider-row:hover {
+	background-color: var(--sf-bg-hover);
+	border-color: var(--sf-accent);
+}
+
+.sf-panel .sf-row-info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.sf-panel .sf-row-title {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--sf-text-main);
+	margin: 0;
+}
+
+.sf-panel .sf-row-meta {
+	display: flex;
+	align-items: center;
+	gap: var(--sf-gap);
+}
+
+.sf-panel .sf-badge-layout {
+	font-size: 10px;
+	font-weight: 600;
+	color: var(--sf-text-muted);
+	border: 1px solid var(--sf-border-color);
+	background-color: var(--sf-bg-card);
+	padding: 2px 8px;
+	border-radius: var(--sf-radius-sm);
+	line-height: 1;
+}
+
+.sf-panel .sf-row-id {
+	font-size: 10px;
+	color: var(--sf-text-muted);
+}
+
+.sf-panel .sf-row-actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.sf-panel .sf-row-shortcode-wrap {
+	width: 280px;
+	position: relative;
+}
+
+.sf-panel .sf-row-shortcode-wrap .input-group {
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+}
+
+#wpbody .sf-panel .sf-row-shortcode-wrap .input-group .form-control {
+	height: var(--sf-control-h);
+	min-height: var(--sf-control-h);
+	box-sizing: border-box;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-right: none;
+	margin: 0;
+}
+
+#wpbody .sf-panel .sf-row-shortcode-wrap .input-group .btn-outline-secondary {
+	height: var(--sf-control-h);
+	min-height: var(--sf-control-h);
+	width: 32px;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--sf-bg-hover);
+	border: 1px solid var(--sf-border-color);
+	color: var(--sf-text-main);
+	transition: background-color var(--sf-transition), border-color var(--sf-transition);
+}
+
+#wpbody .sf-panel .sf-row-shortcode-wrap .input-group .btn-outline-secondary:hover {
+	background-color: var(--sf-border-color);
+	border-color: var(--sf-text-muted);
+}
+
+.sf-panel .sf-row-btns {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+#wpbody .sf-panel .sf-row-btns .btn-sm {
+	height: 28px;
+	min-height: 28px;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+}
+
+#wpbody .sf-panel .sf-row-btns .sf-btn-clone,
+#wpbody .sf-panel .sf-row-btns .sf-btn-delete {
+	width: 28px;
+	padding: 0;
+}
+
+#wpbody .sf-panel .sf-row-checkbox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 8px;
+}
+
+#wpbody .sf-panel .sf-row-checkbox input[type="checkbox"] {
+	margin: 0;
+}
+
+.sf-panel .sf-list-toolbar {
+	padding: 12px 16px;
+	background-color: var(--sf-bg-card);
+	border-bottom: 1px solid var(--sf-border-light);
+	border-radius: var(--sf-radius-lg) var(--sf-radius-lg) 0 0;
+}
+
+@media (max-width: 768px) {
+	.sf-panel .sf-slider-row {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+	.sf-panel .sf-row-actions {
+		width: 100%;
+		justify-content: space-between;
+	}
+}
+
+/* -------------------------------------------------------------------------
+   Flexbox Helper Utilities (Fallback settings page compatibility)
+   ------------------------------------------------------------------------- */
+.sf-panel .d-flex {
+	display: flex;
+}
+.sf-panel .justify-content-between {
+	justify-content: space-between;
+}
+.sf-panel .align-items-center {
+	align-items: center;
+}
+.sf-panel .gap-1 {
+	gap: 4px;
+}
+.sf-panel .gap-2 {
+	gap: var(--sf-gap);
+}
+.sf-panel .gap-3 {
+	gap: 16px;
+}
+.sf-panel .mb-0 {
+	margin-bottom: 0;
+}
+.sf-panel .mb-3 {
+	margin-bottom: 12px;
+}
+.sf-panel .d-none {
+	display: none;
+}
+
+/* :has() fallback for older browsers — requires .sf-has-true class set by JS */
+.sf-panel .mb-3 > p.sf-has-color-input {
+	display: inline-flex;
+	align-items: center;
+	margin: 0 6px 0 0;
+	padding: 0;
+	vertical-align: middle;
+}
+.sf-panel .btn-group.sf-has-true {
+	display: inline-flex;
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius);
+	overflow: hidden;
+}
+.sf-panel .btn-group.sf-has-true .btn-outline-secondary {
+	border: none;
+	border-radius: 0;
+	padding: 4px 12px;
+	font-size: 11px;
+	line-height: 1.4;
+	color: var(--sf-text-muted);
+	background: var(--sf-bg-card);
+}
+.sf-panel .btn-group.sf-has-true .btn-outline-secondary:hover {
+	background: var(--sf-bg-hover);
+}
+.sf-panel .btn-group.sf-has-true.sf-has-true-checked .btn-outline-secondary:last-of-type,
+.sf-panel .btn-group.sf-has-true.sf-has-false-checked .btn-outline-secondary:first-of-type {
+	background: var(--sf-accent);
+	color: var(--sf-text-light);
+}
+.sf-panel .form-check-input {
+	margin-top: 0;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.sf-list-toolbar .form-check-input {
+	width: 15px;
+	height: 15px;
+	border: 1.5px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-sm);
+	background: var(--sf-bg-card);
+	cursor: pointer;
+	accent-color: var(--sf-accent);
+}
+.sf-row-checkbox .form-check-input {
+	width: 15px;
+	height: 15px;
+	border: 1.5px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-sm);
+	background: var(--sf-bg-card);
+	cursor: pointer;
+	accent-color: var(--sf-accent);
+}
+
+/* -------------------------------------------------------------------------
+   Slide Edit Modal Navigation Overlays & Upgraded Buttons
+   ------------------------------------------------------------------------- */
+.sf-slide-modal-preview-wrapper {
+	position: relative;
+	overflow: hidden;
+	border-radius: 6px;
+	margin-bottom: 16px;
+}
+
+.sf-slide-modal-preview-wrapper .sf-slide-modal-preview {
+	margin-bottom: 0 !important;
+}
+
+.sf-modal-nav-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 36px;
+	background: rgba(15, 23, 42, 0.45);
+	backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: #ffffff;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 10;
+	transition: background-color var(--sf-transition), color var(--sf-transition), transform var(--sf-transition), border-color var(--sf-transition);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	padding: 0;
+	min-height: 0 !important;
+}
+
+.sf-modal-nav-btn:hover {
+	background: rgba(15, 23, 42, 0.75);
+	border-color: rgba(255, 255, 255, 0.4);
+	color: #ffffff;
+	transform: translateY(-50%) scale(1.08);
+}
+
+.sf-modal-nav-btn:active {
+	transform: translateY(-50%) scale(0.95);
+}
+
+.sf-modal-prev-btn {
+	left: 12px;
+}
+
+.sf-modal-next-btn {
+	right: 12px;
+}
+
+/* Modal Footer Buttons Style Upgrades */
+#sfSlideModal .modal-footer {
+	background-color: var(--sf-bg-hover);
+	border-top: 1px solid var(--sf-border-light);
+	padding: 12px 20px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+#sfSlideModal .modal-footer .btn {
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	padding: 8px 20px;
+	min-height: 38px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	cursor: pointer;
+	transition: background-color var(--sf-transition), border-color var(--sf-transition), color var(--sf-transition), box-shadow var(--sf-transition);
+}
+
+#sfSlideModal .modal-footer .btn-outline-secondary {
+	background-color: transparent;
+	border: 1px solid var(--sf-border-color);
+	color: var(--sf-text-muted);
+}
+#sfSlideModal .modal-footer .btn-outline-secondary:hover {
+	background-color: var(--sf-bg-hover);
+	border-color: var(--sf-text-muted);
+	color: var(--sf-text-main);
+}
+
+#sfSlideModal .modal-footer .btn-primary {
+	background-color: var(--sf-accent);
+	border-color: var(--sf-accent);
+	color: var(--sf-text-light);
+	box-shadow: 0 2px 6px rgba(38, 123, 163, 0.25);
+}
+#sfSlideModal .modal-footer .btn-primary:hover {
+	background-color: var(--sf-accent-hover);
+	border-color: var(--sf-accent-hover);
+	box-shadow: 0 4px 12px rgba(38, 123, 163, 0.35);
+}
+
+/* -------------------------------------------------------------------------
+   Inline Setting Rows for Settings Panels
+   ------------------------------------------------------------------------- */
+.sf-panel .sf-settings-container .sf-setting-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 0;
+	border-bottom: 1px solid var(--sf-border-light);
+	gap: var(--sf-gap);
+}
+
+.sf-panel .sf-settings-container .sf-setting-row:last-child {
+	border-bottom: none;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-left {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-width: 0;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-left .sf-title {
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--sf-text-main);
+	line-height: 1.4;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-left .sf-tooltip {
+	margin-top: 2px;
+	font-size: 11px;
+	color: var(--sf-text-muted);
+	line-height: 1.4;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-right {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-shrink: 0;
+}
+
+/* Premium Color Input Swatch styling */
+.sf-panel .sf-settings-container .sf-setting-row-right input[type="color"].form-control-color {
+	width: 36px;
+	height: 24px;
+	padding: 0;
+	border: 1px solid var(--sf-border-color);
+	border-radius: var(--sf-radius-sm);
+	cursor: pointer;
+	background: none;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-right input[type="color"].form-control-color::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-right input[type="color"].form-control-color::-webkit-color-swatch {
+	border: none;
+	border-radius: var(--sf-radius-sm);
+}
+
+/* Compact input controls on rows */
+.sf-panel .sf-settings-container .sf-setting-row-right .form-control {
+	width: 80px;
+	height: 28px;
+	padding: 4px 8px;
+	font-size: 11px;
+}
+
+.sf-panel .sf-settings-container .sf-setting-row-right .form-select {
+	width: 130px;
+	height: 28px;
+	padding: 4px 24px 4px 8px;
+	font-size: 11px;
+}
+
+/* Ensure checkbox rows and special grids still look correct */
+.sf-panel .sf-settings-container .col-md-3 {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.sf-panel .sf-settings-container .col-md-3 .sf-title {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--sf-text-muted);
+}
+
+/* -------------------------------------------------------------------------
+   Custom Confirmation Modal System (4px rounded corners, crisp slate borders, centered)
+   ------------------------------------------------------------------------- */
+#sfConfirmModalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999999;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(15, 23, 42, 0.65);
+	backdrop-filter: blur(2px);
+}
+#sfConfirmModalOverlay.sf-modal-show {
+	display: flex !important;
+}
+.sf-confirm-modal-box {
+	max-width: 420px;
+	width: 90%;
+	background-color: #ffffff;
+	border: 1px solid #cbd5e1;
+	border-radius: 4px;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	margin: auto;
+}
+.sf-confirm-modal-header {
+	background-color: #0f172a;
+	color: #ffffff;
+	padding: 12px 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #1e293b;
+}
+.sf-confirm-modal-title {
+	font-size: 13px;
+	font-weight: 700;
+	color: #ffffff;
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+.sf-confirm-modal-close {
+	background: transparent;
+	border: none;
+	color: #94a3b8;
+	font-size: 14px;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 4px;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.sf-confirm-modal-close:hover {
+	color: #ffffff;
+	background-color: #1e293b;
+}
+.sf-confirm-modal-body {
+	padding: 20px 16px;
+	color: #334155;
+	font-size: 13px;
+	line-height: 1.5;
+}
+.sf-confirm-modal-footer {
+	padding: 12px 16px;
+	background-color: #f8fafc;
+	border-top: 1px solid #e2e8f0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+}
+.sf-confirm-modal-btn-cancel {
+	border-radius: 4px;
+	font-weight: 600;
+	font-size: 12px;
+	padding: 6px 14px;
+	background-color: #ffffff;
+	color: #334155;
+	border: 1px solid #cbd5e1;
+	cursor: pointer;
+}
+.sf-confirm-modal-btn-cancel:hover {
+	background-color: #f1f5f9;
+}
+.sf-confirm-modal-btn-danger {
+	border-radius: 4px;
+	font-weight: 600;
+	font-size: 12px;
+	padding: 6px 14px;
+	background-color: #dc2626;
+	color: #ffffff;
+	border: 1px solid #dc2626;
+	cursor: pointer;
+}
+.sf-confirm-modal-btn-danger:hover {
+	background-color: #b91c1c;
+}
+
+/* Modal center alignment & 4px rounded corners */
+.sf-panel .modal-content,
+#sfSlideModal .modal-content {
+	border-radius: 4px !important;
+	border: 1px solid #cbd5e1 !important;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15) !important;
+}
+#sfSlideModal .modal-dialog {
+	display: flex;
+	align-items: center;
+	min-height: calc(100% - 3.5rem);
+	margin: auto;
+}
+

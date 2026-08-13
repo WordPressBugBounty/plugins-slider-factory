@@ -20,7 +20,7 @@
 		if ( isset( $slider['sf_5_height'] ) ) {
 			$sf_5_height = $slider['sf_5_height'];
 		} else {
-			$sf_5_height = '400px';
+			$sf_5_height = '500px';
 		}
 		?>
 		<h5 for="sf_5_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>

@@ -15,18 +15,17 @@
 		<div id="sf-1-width-help" class="form-text sf-tooltip"><?php esc_html_e( 'Define the slider width. You can use any unit you like: percent 0% to 100% OR pixels 200px/300px/500px etc.', 'slider-factory' ); ?></div>
 	</div>
 	
-	<div class="mb-3 col-md-6">
+	<div class="mb-3">
 		<?php
 		if ( isset( $slider['sf_3_height'] ) ) {
 			$sf_3_height = $slider['sf_3_height'];
 		} else {
-			$sf_3_height = '500';
+			$sf_3_height = '500px';
 		}
 		?>
 		<h5 for="sf_3_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>
-		<input type="range" class="form-range" id="sf_3_height" min="100" max="1080" step="5" value="<?php echo esc_attr( $sf_3_height ); ?>" oninput="WpfrankSFprintRange(this.id, this.value);">
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_3_height-value"><?php echo esc_html( $sf_3_height ); ?></button> <?php esc_html_e( 'pixels', 'slider-factory' ); ?>
-		<div id="sf_3_height-help" class="form-text sf-tooltip"><?php esc_html_e( 'Define the slider height.', 'slider-factory' ); ?></div>
+		<input type="text" class="form-control w-50" id="sf_3_height" name="sf_3_height" value="<?php echo esc_attr( $sf_3_height ); ?>" aria-describedby="sf_3_height-help">
+		<div id="sf_3_height-help" class="form-text sf-tooltip"><?php esc_html_e( 'Define the slider height. You can use any unit you like: percent 0% to 100% OR pixels 200px/300px/500px etc.', 'slider-factory' ); ?></div>
 	</div>
 	
 	<div class="mb-3">

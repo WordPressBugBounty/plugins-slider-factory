@@ -21,7 +21,7 @@
 		if ( isset( $slider['sf_6_height'] ) ) {
 			$sf_6_height = $slider['sf_6_height'];
 		} else {
-			$sf_6_height = '100%';
+			$sf_6_height = '600px';
 		}
 		?>
 		<h5 for="sf_6_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>

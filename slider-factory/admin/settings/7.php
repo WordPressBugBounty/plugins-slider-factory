@@ -20,7 +20,7 @@
 		if ( isset( $slider['sf_7_height'] ) ) {
 			$sf_7_height = $slider['sf_7_height'];
 		} else {
-			$sf_7_height = '100%';
+			$sf_7_height = '600px';
 		}
 		?>
 		<h5 for="sf_7_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>
@@ -33,7 +33,7 @@
 		if ( isset( $slider['sf_7_slide_circle_size'] ) ) {
 			$sf_7_slide_circle_size = $slider['sf_7_slide_circle_size'];
 		} else {
-			$sf_7_slide_circle_size = 360;
+			$sf_7_slide_circle_size = 340;
 		}
 		?>
 		<h5 for="sf_7_slide_circle_size" class="form-label sf-title"><?php esc_html_e( 'Slide Circle Size', 'slider-factory' ); ?></h5>
@@ -46,7 +46,7 @@
 		if ( isset( $slider['sf_7_inner_circle_size'] ) ) {
 			$sf_7_inner_circle_size = $slider['sf_7_inner_circle_size'];
 		} else {
-			$sf_7_inner_circle_size = 480;
+			$sf_7_inner_circle_size = 240;
 		}
 		?>
 		<h5 for="sf_7_inner_circle_size" class="form-label sf-title"><?php esc_html_e( 'Inner Circle Size', 'slider-factory' ); ?></h5>
@@ -69,14 +69,14 @@
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_7_Color" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Title and Description Text Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_7_Color" value="#eeeeee" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_7_Color-value" disabled>#eeeeee</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_7_Color-value" disabled>#eeeeee</button>
 		<div id="sf_7_Color-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the title and description text color.', 'slider-factory' ); ?></div>
 	</div>
 	
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_7_shadowColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Title and Description Shadow Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_7_shadowColor" value="#616161" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_7_shadowColor-value" disabled>#616161</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_7_shadowColor-value" disabled>#616161</button>
 		<div id="sf_7_shadowColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the title and description text shadow color.', 'slider-factory' ); ?></div>
 	</div>
 	

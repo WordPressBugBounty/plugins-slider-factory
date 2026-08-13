@@ -214,14 +214,14 @@
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_4_loaderColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Loader Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_4_loaderColor" value="#eeeeee" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_4_loaderColor-value" disabled>#eeeeee</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_4_loaderColor-value" disabled>#eeeeee</button>
 		<div id="sf_4_loaderColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the loader color.', 'slider-factory' ); ?></div>
 	</div>
 	
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_4_loaderBgColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Loader Background Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_4_loaderBgColor" value="#222222" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_4_loaderBgColor-value" disabled>#222222</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_4_loaderBgColor-value" disabled>#222222</button>
 		<div id="sf_4_loaderBgColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the loader background color.', 'slider-factory' ); ?></div>
 	</div>
 	

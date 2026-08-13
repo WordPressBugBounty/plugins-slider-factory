@@ -8,7 +8,7 @@
 		if ( isset( $slider['sf_8_width'] ) ) {
 			$sf_8_width = $slider['sf_8_width'];
 		} else {
-			$sf_8_width = '400px';
+			$sf_8_width = '100%';
 		}
 		?>
 		<h5 for="sf_8_width" class="form-label sf-title"><?php esc_html_e( 'Width', 'slider-factory' ); ?></h5>
@@ -21,7 +21,7 @@
 		if ( isset( $slider['sf_8_height'] ) ) {
 			$sf_8_height = $slider['sf_8_height'];
 		} else {
-			$sf_8_height = '400px';
+			$sf_8_height = '300px';
 		}
 		?>
 		<h5 for="sf_8_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>

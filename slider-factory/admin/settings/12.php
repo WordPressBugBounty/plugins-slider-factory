@@ -2,12 +2,6 @@
 	exit;} // Exit if accessed directly ?>
 
 <div class="p-3 sf-panel-setting">
-	<div class="mb-3">
-		<div id="sf_12_slider-help" class="form-text sf-tooltip">
-			<strong><?php esc_html_e( 'Note : This is a Before After Slider.', 'slider-factory' ); ?></strong>
-			<strong><?php esc_html_e( 'You need to upload two images only. First image is Before image and second image is After image.', 'slider-factory' ); ?></strong>
-		</div>
-	</div>
 
 	<div class="mb-3">
 		<?php
@@ -27,7 +21,7 @@
 		if ( isset( $slider['sf_12_height'] ) ) {
 			$sf_12_height = $slider['sf_12_height'];
 		} else {
-			$sf_12_height = 'auto';
+			$sf_12_height = '600px';
 		}
 		?>
 		<h5 for="sf_12_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>

@@ -19,16 +19,26 @@ if ( isset( $slider['sf_9_auto_play'] ) ) {
 } else {
 	$sf_9_auto_play = 'true';
 }
+// FREE EDITION: auto-play-speed, fade-speed, colors, thumbnails and thumbnail size are PRO
+// features (locked in the original plugin) — fixed defaults below. Only sorting is free.
+$sf_9_auto_play_speed = '3000';
+$sf_9_fade_speed = '400';
+$sf_9_bgColor = '#252525';
+$sf_9_textColor = '#ffffff';
+$sf_9_thumbnails = 'true';
+$sf_9_thumbWidth = '170';
+$sf_9_thumbHeight = '100';
 if ( isset( $slider['sf_9_sorting'] ) ) {
 	$sf_9_sorting = $slider['sf_9_sorting'];
 } else {
 	$sf_9_sorting = 0;
 }
+// Custom CSS is a PRO feature — intentionally not rendered in Free.
 ?>
-<div id="sf-9-<?php echo esc_attr( $sf_slider_id ); ?>">
+<div id="sf-9-<?php echo esc_attr( $sf_slider_id ); ?>" class="sf-9-container-<?php echo esc_attr( $sf_slider_id ); ?>">
 	<div class="fullscreen-container-<?php echo esc_attr( $sf_slider_id ); ?> hidden-<?php echo esc_attr( $sf_slider_id ); ?>">
 		<div class='fullscreen-div-<?php echo esc_attr( $sf_slider_id ); ?>'>
-			<img class="remove-fullscreen-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ).'layouts/assets/9/icons/remove_icon.webp' ); ?>" width="60" />
+			<img class="remove-fullscreen-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ).'layouts/assets/9/icons/remove_icon.webp' ); ?>" width="30" />
 		</div>
 	</div>
 
@@ -38,13 +48,13 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 			<a class="prev-<?php echo esc_attr( $sf_slider_id ); ?>">&#x2039;</a>
 			<a class="next-<?php echo esc_attr( $sf_slider_id ); ?>">&#x203A;</a>
 			<?php if ( $sf_9_auto_play == 'true' ) { ?>
-			<img class="toggleDiapo-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/pause_diapo.png' ); ?>" width="40" />
+			<img class="toggleDiapo-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/pause_diapo.png' ); ?>" width="24" />
 			<?php }; ?>
 			<?php if ( $sf_9_auto_play == 'false' ) { ?>
-			<img class="toggleDiapo-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/play_diapo.png' ); ?>" width="40" />
+			<img class="toggleDiapo-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/play_diapo.png' ); ?>" width="24" />
 			<?php }; ?>
 
-			<img class="fullscreen-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/fullscreen.png' ); ?>" width="40" />
+			<div class="fullscreen-<?php echo esc_attr( $sf_slider_id ); ?>"></div>
 			<img id='preview-<?php echo esc_attr( $sf_slider_id ); ?>' />
 		</div>
 
@@ -52,38 +62,49 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 			<span id="caption-<?php echo esc_attr( $sf_slider_id ); ?>"></span>
 		</div>
 
-		<div id="thumbnails" style="text-align:center; display: none;">
+		<div id="thumbnails" class="sf-9-thumbnails-wrap-<?php echo esc_attr( $sf_slider_id ); ?>">
 			<div class="wrapper-<?php echo esc_attr( $sf_slider_id ); ?>">
 				<?php
-				// slide sorting start
-				if ( $sf_9_sorting == 1 ) {
-					// Slide ID Ascending (key Ascending)
-					ksort( $slider['sf_slide_title'] );
+				$sf_9_slide_ids = array();
+				if ( isset( $slider['sf_slide_id'] ) && is_array( $slider['sf_slide_id'] ) && ! empty( $slider['sf_slide_id'] ) ) {
+					$sf_9_slide_ids = $slider['sf_slide_id'];
+				} elseif ( isset( $slider['sf_slide_title'] ) && is_array( $slider['sf_slide_title'] ) ) {
+					$sf_9_slide_ids = array_keys( $slider['sf_slide_title'] );
 				}
-				if ( $sf_9_sorting == 2 ) {
-					// Slide ID Descending (key Descending)
-					krsort( $slider['sf_slide_title'] );
-				}
-				// slide sorting end
 
-				// load sides
-				if ( isset( $slider['sf_slide_title'] ) ) {
-					foreach ( $slider['sf_slide_title'] as $sf_id_1 => $value ) {
+				if ( isset( $slider['sf_slide_title'] ) && is_array( $slider['sf_slide_title'] ) ) {
+					if ( $sf_9_sorting == 1 ) {
+						ksort( $slider['sf_slide_title'] );
+						$sf_9_slide_ids = array_keys( $slider['sf_slide_title'] );
+					} elseif ( $sf_9_sorting == 2 ) {
+						krsort( $slider['sf_slide_title'] );
+						$sf_9_slide_ids = array_keys( $slider['sf_slide_title'] );
+					} elseif ( $sf_9_sorting == 3 ) {
+						shuffle( $sf_9_slide_ids );
+					} elseif ( $sf_9_sorting == 4 ) {
+						asort( $slider['sf_slide_title'] );
+						$sf_9_slide_ids = array_keys( $slider['sf_slide_title'] );
+					} elseif ( $sf_9_sorting == 5 ) {
+						arsort( $slider['sf_slide_title'] );
+						$sf_9_slide_ids = array_keys( $slider['sf_slide_title'] );
+					}
+				}
+
+				if ( ! empty( $sf_9_slide_ids ) ) {
+					foreach ( $sf_9_slide_ids as $sf_id_1 ) {
 						$attachment_id  = $sf_id_1;
-						$sf_slide_title = get_the_title( $attachment_id );
-						$sf_slide_alt   = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
-						// wp_get_attachment_image_src ( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false )
-						// thumb, thumbnail, medium, large, post-thumbnail
-						$sf_slide_thumbnail_url = wp_get_attachment_image_src( $attachment_id, 'large', true ); // attachment medium URL
-						$sf_slide_full_url      = wp_get_attachment_image_src( $attachment_id, 'full', true ); // attachment medium URL
+						$sf_slide_title = isset( $slider['sf_slide_title'][ $sf_id_1 ] ) && trim( $slider['sf_slide_title'][ $sf_id_1 ] ) !== '' ? trim( $slider['sf_slide_title'][ $sf_id_1 ] ) : get_the_title( $attachment_id );
+						$sf_slide_alt   = isset( $slider['sf_slide_alt_text'][ $sf_id_1 ] ) && trim( $slider['sf_slide_alt_text'][ $sf_id_1 ] ) !== '' ? trim( $slider['sf_slide_alt_text'][ $sf_id_1 ] ) : get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+						$sf_slide_thumbnail_url = wp_get_attachment_image_src( $attachment_id, 'large', true );
+						$sf_slide_full_url      = wp_get_attachment_image_src( $attachment_id, 'full', true );
+						if ( ! is_array( $sf_slide_thumbnail_url ) ) { continue; }
 						$attachment             = get_post( $attachment_id );
-						$sf_slide_descs         = $attachment->post_content; // attachment description
-						// print_r($sf_slide_full_url);
+						$sf_slide_descs         = isset( $slider['sf_slide_desc'][ $sf_id_1 ] ) && trim( $slider['sf_slide_desc'][ $sf_id_1 ] ) !== '' ? trim( $slider['sf_slide_desc'][ $sf_id_1 ] ) : ( $attachment ? $attachment->post_content : '' );
 						?>
-						<img class="thumbnail-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( $sf_slide_full_url[0] ); ?>" alt="<?php echo esc_attr( $sf_slide_title ); ?>">
+						<img class="thumbnail-<?php echo esc_attr( $sf_slider_id ); ?>" src="<?php echo esc_url( $sf_slide_thumbnail_url[0] ); ?>" alt="<?php echo esc_attr( $sf_slide_title ); ?>" loading="lazy" decoding="async">
 						<?php
-					}//end of for each
-				} //end of count
+					}
+				}
 				?>
 			</div>
 		</div>
@@ -91,42 +112,47 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 </div>
 
 <style>
-#sf-9-<?php echo esc_html( $sf_slider_id ); ?> {
-	width: <?php echo esc_html( $sf_9_width ); ?> !important;
+#sf-9-<?php echo esc_html( $sf_slider_id ); ?>,
+#sf-9-<?php echo esc_html( $sf_slider_id ); ?> * {
+	box-sizing: border-box;
 }
 
-#img-<?php echo esc_html( $sf_slider_id ); ?> {
-
+#sf-9-<?php echo esc_html( $sf_slider_id ); ?> {
+	width: <?php echo esc_html( $sf_9_width ); ?>;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .caption-container-<?php echo esc_html( $sf_slider_id ); ?> {
-	background-color: #000000;
+	background-color: <?php echo esc_html( $sf_9_bgColor ); ?>;
 	text-align: center;
 	padding: 6px 8px;
-	color : #ffffff;
-	width: <?php echo esc_html( $sf_9_width ); ?> !important;
+	color: <?php echo esc_html( $sf_9_textColor ); ?>;
+	width: 100%;
 }
 
-#thumbnails {
+.sf-9-thumbnails-wrap-<?php echo esc_html( $sf_slider_id ); ?> {
+	text-align: center;
 	white-space: nowrap;
 	height: 20%;
 	width: 100%;
+	<?php if ( $sf_9_thumbnails == 'false' ) { ?>
+	display: none;
+	<?php } else { ?>
+	display: block;
+	<?php } ?>
 }
 
 .wrapper-<?php echo esc_html( $sf_slider_id ); ?> {
 	position: relative;
 	overflow: scroll;
 	scroll-behavior: smooth;
-	width: <?php echo esc_html( $sf_9_width ); ?> !important;
+	width: 100%;
+	-ms-overflow-style: none;
 }
 
 .wrapper-<?php echo esc_html( $sf_slider_id ); ?>::-webkit-scrollbar {
 	display: none;
-}
-
-/* Hide scrollbar for IE and Edge */
-.wrapper-<?php echo esc_html( $sf_slider_id ); ?> {
-	-ms-overflow-style: none;
 }
 
 #slide-<?php echo esc_html( $sf_slider_id ); ?> {
@@ -135,16 +161,18 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 }
 
 #preview-<?php echo esc_html( $sf_slider_id ); ?> {
-	height: <?php echo esc_html( $sf_9_height ); ?> !important;
-	width: <?php echo esc_html( $sf_9_width ); ?> !important;
-	object-fit: fill; /*Object-fit properties are cover, contain, fit ,scale-down and none. */
+	height: <?php echo esc_html( $sf_9_height ); ?>;
+	width: 100%;
+	object-fit: cover;
 }
 
 .thumbnail-<?php echo esc_html( $sf_slider_id ); ?> {
-	width: 170px;
-	height: 140px;
+	width: <?php echo esc_html( $sf_9_thumbWidth ); ?>px;
+	height: <?php echo esc_html( $sf_9_thumbHeight ); ?>px;
 	opacity: 0.5;
-	display: unset !important;
+	display: inline-block;
+	object-fit: cover;
+	cursor: pointer;
 }
 
 .selected-<?php echo esc_html( $sf_slider_id ); ?> {
@@ -161,27 +189,23 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 	padding: auto;
 }
 
-/* .caption-container {
-	background-color :#252525;
-	text-align: center;
-	padding: 6px 8px;
-	color : red;
-} OLD CONTAINER CSS */
-
-.prev-<?php echo esc_html( $sf_slider_id ); ?>,
-.next-<?php echo esc_html( $sf_slider_id ); ?> {
+#sf-9-<?php echo esc_html( $sf_slider_id ); ?> a.prev-<?php echo esc_html( $sf_slider_id ); ?>,
+#sf-9-<?php echo esc_html( $sf_slider_id ); ?> a.next-<?php echo esc_html( $sf_slider_id ); ?> {
 	cursor: pointer;
 	position: absolute;
 	top: 50%;
 	width: auto;
-	padding: 16px;
-	margin-top: -50px;
-	color: white;
+	padding: 12px 16px;
+	transform: translateY(-50%);
+	color: #ffffff;
 	font-weight: bold;
-	font-size: 100px;
-	border-radius: 0 3px 3px 0;
+	font-size: 40px;
+	border-radius: 3px;
 	user-select: none;
 	-webkit-user-select: none;
+	text-decoration: none;
+	box-shadow: none;
+	border-bottom: none;
 }
 
 .next-<?php echo esc_html( $sf_slider_id ); ?> {
@@ -194,12 +218,9 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 
 .toggleDiapo-<?php echo esc_html( $sf_slider_id ); ?> {
 	position: absolute;
-	bottom: 0;
+	bottom: 15px;
 	left: 50%;
-	margin-left: -30px;
-	font-size: 30px;
-	color: goldenrod;
-	font-weight: bold;
+	transform: translateX(-50%);
 	cursor: pointer;
 	padding: 5px;
 	user-select: none;
@@ -208,16 +229,25 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 
 .fullscreen-<?php echo esc_html( $sf_slider_id ); ?> {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 15px;
+	right: 15px;
+	width: 20px;
+	height: 20px;
 	cursor: pointer;
 	user-select: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3'/%3E%3C/svg%3E");
+	background-size: contain;
+	background-repeat: no-repeat;
+	transition: opacity 0.2s ease;
+}
+
+.fullscreen-<?php echo esc_html( $sf_slider_id ); ?>:hover {
+	opacity: 0.8;
 }
 
 .prev-<?php echo esc_html( $sf_slider_id ); ?>:hover,
 .next-<?php echo esc_html( $sf_slider_id ); ?>:hover,
-.toggleDiapo-<?php echo esc_html( $sf_slider_id ); ?>:hover,
-.fullscreen-<?php echo esc_html( $sf_slider_id ); ?>:hover {
+.toggleDiapo-<?php echo esc_html( $sf_slider_id ); ?>:hover {
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -227,14 +257,17 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 50px;
-	height: 50px;
-	top: 1.4%;
-	left: 0.9%;
-	background-color: rgba(0, 0, 0, 0.8);
-	border: 2px solid rgb(212, 207, 207);
-	color: white;
-	font: 1.5em Arial, sans-serif;
+	width: 36px;
+	height: 36px;
+	top: 15px;
+	left: 15px;
+	background-color: <?php echo esc_html( $sf_9_bgColor ); ?>;
+	color: <?php echo esc_html( $sf_9_textColor ); ?>;
+	border: 1px solid <?php echo esc_html( $sf_9_textColor ); ?>;
+	font-family: system-ui, -apple-system, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .fullscreen-container-<?php echo esc_html( $sf_slider_id ); ?> {
@@ -243,15 +276,15 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 	left: 0;
 	bottom: 0;
 	right: 0;
-	z-index: 10 ;
-	background-color: rgba(0, 0, 0, 0.9) ;
-	display: block ;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.9);
+	display: block;
 }
 
 .fullscreen-div-<?php echo esc_html( $sf_slider_id ); ?> {
-	width: 100% !important; 
-	height: 100% !important;
-	display: block ;
+	width: 100%;
+	height: 100%;
+	display: block;
 	margin: auto;
 	position: relative;
 	top: 0;
@@ -275,14 +308,15 @@ if ( isset( $slider['sf_9_sorting'] ) ) {
 
 .remove-fullscreen-<?php echo esc_html( $sf_slider_id ); ?> {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 15px;
+	right: 15px;
 	cursor: pointer;
 }
 
 .remove-fullscreen-<?php echo esc_html( $sf_slider_id ); ?>:hover {
 	background-color: rgba(0, 0, 0, 0.8);
 }
+
 </style>
 <script>
 window.myNameSpace = window.myNameSpace || {};
@@ -320,7 +354,7 @@ jQuery(function () {
 	function showNextImg() {
 		clearInterval(interv);
 		
-		interv = setInterval(showNextImg, 4000);
+		interv = setInterval(showNextImg, <?php echo esc_js( $sf_9_auto_play_speed ); ?>);
 		
 		var el = jQuery('.selected-<?php echo esc_js( $sf_slider_id ); ?>');
 		var counter = jQuery('.counter-<?php echo esc_js( $sf_slider_id ); ?>');
@@ -328,10 +362,8 @@ jQuery(function () {
 			counter.text(el.index() + 1);
 			if (el.next().overflown())
 				scrollToElement(el, 'next');
-			//el.fadeOut(200, () => {
-				el.next().trigger('click');
-				el.show();
-			//});
+			el.next().trigger('click');
+			el.show();
 		}
 		else {
 			jQuery('.thumbnail-<?php echo esc_js( $sf_slider_id ); ?>:first').trigger('click');
@@ -344,7 +376,7 @@ jQuery(function () {
 	function showPrevImg() {
 		clearInterval(interv);
 		
-		interv = setInterval(showNextImg, 4000);
+		interv = setInterval(showNextImg, <?php echo esc_js( $sf_9_auto_play_speed ); ?>);
 		
 		var el = jQuery('.selected-<?php echo esc_js( $sf_slider_id ); ?>');
 		var counter = jQuery('.counter-<?php echo esc_js( $sf_slider_id ); ?>');
@@ -374,14 +406,14 @@ jQuery(function () {
 		jQuery("#caption-<?php echo esc_js( $sf_slider_id ); ?>").text(jQuery('.selected-<?php echo esc_js( $sf_slider_id ); ?>').attr('alt'));
 		jQuery('.counter-<?php echo esc_js( $sf_slider_id ); ?>').text(index + 1);
 		var src = jQuery(this).attr('src');
-		jQuery('#preview-<?php echo esc_js( $sf_slider_id ); ?>').fadeOut(300, () => {
+		jQuery('#preview-<?php echo esc_js( $sf_slider_id ); ?>').fadeOut(<?php echo esc_js( $sf_9_fade_speed ); ?>, () => {
 			jQuery('#preview-<?php echo esc_js( $sf_slider_id ); ?>').attr('src', src);
-			jQuery('#preview-<?php echo esc_js( $sf_slider_id ); ?>').fadeIn(300);
+			jQuery('#preview-<?php echo esc_js( $sf_slider_id ); ?>').fadeIn(<?php echo esc_js( $sf_9_fade_speed ); ?>);
 		});
 	}
 
 	function toggleDiapo() {
-		interv = (interv != null) ? clearInterval(interv) : setInterval(showNextImg, 4000);
+		interv = (interv != null) ? clearInterval(interv) : setInterval(showNextImg, <?php echo esc_js( $sf_9_auto_play_speed ); ?>);
 		var src = jQuery('.toggleDiapo-<?php echo esc_js( $sf_slider_id ); ?>').attr('src');
 		if (src == "<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/play_diapo.png' ); ?>")
 			jQuery('.toggleDiapo-<?php echo esc_js( $sf_slider_id ); ?>').attr('src', "<?php echo esc_url( plugin_dir_url( __DIR__ ). 'layouts/assets/9/icons/pause_diapo.png' ); ?>");
@@ -415,7 +447,7 @@ jQuery(function () {
 	// start auto diapo
 	var interv;
 	<?php if ( $sf_9_auto_play == 'true' ) { ?>
-	interv = setInterval(showNextImg, 4000);
+	interv = setInterval(showNextImg, <?php echo esc_js( $sf_9_auto_play_speed ); ?>);
 	<?php }; ?>
 	<?php if ( $sf_9_auto_play == 'false' ) { ?>
 	interv = null;

@@ -20,7 +20,7 @@
 		if ( isset( $slider['sf_10_height'] ) ) {
 			$sf_10_height = $slider['sf_10_height'];
 		} else {
-			$sf_10_height = '100%';
+			$sf_10_height = '700px';
 		}
 		?>
 		<h5 for="sf_10_height" class="form-label sf-title"><?php esc_html_e( 'Height', 'slider-factory' ); ?></h5>
@@ -31,29 +31,43 @@
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_10_BgColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Slider Background Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_10_BgColor" value="#323232" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_BgColor-value">#323232</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_BgColor-value">#323232</button>
 		<div id="sf_10_BgColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the background color for the slider.', 'slider-factory' ); ?></div>
 	</div>
 	
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_10_TextColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Title and Description Text Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_10_TextColor" value="#ffffff" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_TextColor-value">#ffffff</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_TextColor-value">#ffffff</button>
 		<div id="sf_10_TextColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the title and description text color.', 'slider-factory' ); ?></div>
 	</div>
 	
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_10_dotsColor" class="form-label sf-title sf-title sf-title-disabled"><?php esc_html_e( 'Slide Dots Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_10_dotsColor" value="#323232" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_dotsColor-value">#323232</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_dotsColor-value">#323232</button>
 		<div id="sf_10_dotsColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the dots color.', 'slider-factory' ); ?></div>
 	</div>
 	
 	<div class="mb-3 col-md-6">
 		<h5 for="sf_10_dotsActiveColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Active Slide Dots Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info  sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
 		<p><input type="color" class="col-2" id="sf_10_dotsActiveColor" value="#ffffff" oninput="SFprintRange(this.id, this.value);" disabled></p>
-		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_dotsActiveColor-value">#ffffff</button> <?php esc_html_e( 'HEX', 'slider-factory' ); ?>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_dotsActiveColor-value">#ffffff</button>
 		<div id="sf_10_dotsActiveColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the dots color for the active slide.', 'slider-factory' ); ?></div>
+	</div>
+	
+	<div class="mb-3 col-md-6">
+		<h5 for="sf_10_btnBgColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Button Background Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
+		<p><input type="color" class="col-2" id="sf_10_btnBgColor" value="#F1F1F1" oninput="SFprintRange(this.id, this.value);" disabled></p>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_btnBgColor-value">#F1F1F1</button>
+		<div id="sf_10_btnBgColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the background color for buttons.', 'slider-factory' ); ?></div>
+	</div>
+	
+	<div class="mb-3 col-md-6">
+		<h5 for="sf_10_btnTextColor" class="form-label sf-title sf-title-disabled"><?php esc_html_e( 'Button Text Color', 'slider-factory' ); ?> <sup><a class="badge rounded-pill bg-info sf-buypro-link" href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/" target="_blank"><span class="sf-pro-tag"></span></a></sup></h5>
+		<p><input type="color" class="col-2" id="sf_10_btnTextColor" value="#000000" oninput="SFprintRange(this.id, this.value);" disabled></p>
+		<button class="btn btn-sm btn-secondary pl-2" id="sf_10_btnTextColor-value">#000000</button>
+		<div id="sf_10_btnTextColor-help" class="form-text sf-tooltip sf-tooltip-disabled"><?php esc_html_e( 'Choose the text color for buttons.', 'slider-factory' ); ?></div>
 	</div>
 		
 	<div class="mb-3">

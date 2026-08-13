@@ -9,16 +9,28 @@ if ( isset( $slider['sf_6_width'] ) ) {
 } else {
 	$sf_6_width = '100%';
 }
-if ( isset( $slider['sf_6_height'] ) ) {
-	$sf_6_height = $slider['sf_6_height'];
+if ( isset( $slider['sf_6_height'] ) && ! empty( trim( $slider['sf_6_height'] ) ) ) {
+	$sf_6_height = trim( $slider['sf_6_height'] );
 } else {
-	$sf_6_height = '100%';
+	$sf_6_height = '600px';
 }
+if ( is_numeric( $sf_6_height ) ) {
+	$sf_6_height .= 'px';
+}
+// FREE EDITION: transition-speed, auto-play-speed, page-dots, navigation-arrows, responsive
+// and direction are PRO features (locked in the original plugin) — fixed defaults below.
+$sf_6_transition_speed = '1000';
 if ( isset( $slider['sf_6_auto_play'] ) ) {
 	$sf_6_auto_play = $slider['sf_6_auto_play'];
 } else {
 	$sf_6_auto_play = 'true';
 }
+$sf_6_auto_play_speed = '2000';
+$sf_6_page_dots = 'true';
+$sf_6_navigation_arrow = 'true';
+$sf_6_responsive = 'true';
+$sf_6_direction = 'four';
+// Custom CSS is a PRO feature — intentionally not rendered in Free.
 if ( isset( $slider['sf_6_sorting'] ) ) {
 	$sf_6_sorting = $slider['sf_6_sorting'];
 } else {
@@ -31,45 +43,82 @@ wp_enqueue_style( 'sf-6-wipeslider-css' ); // v2.2.1
 wp_enqueue_script( 'sf-6-wipeslider-js' );
 ?>
 <script>
-jQuery(window).on('load', function(){
-	jQuery('.sf-6-<?php echo esc_js( $sf_slider_id ); ?>').wipeSlider({
+jQuery(document).ready(function(){
+	var $sf6Container = jQuery('.sf-6-<?php echo esc_js( $sf_slider_id ); ?>');
+	$sf6Container.wipeSlider({
+		transition : <?php echo esc_js( $sf_6_transition_speed ); ?>,
+		duration : <?php echo esc_js( $sf_6_auto_play_speed ); ?>,
 		auto : <?php echo esc_js( $sf_6_auto_play ); ?>,
+		pager : <?php echo esc_js( $sf_6_page_dots ); ?>,
+		controls : <?php echo esc_js( $sf_6_navigation_arrow ); ?>,
+		variable: <?php echo esc_js( $sf_6_responsive ); ?>,
+		direction : '<?php echo esc_js( $sf_6_direction ); ?>',
+		easing : 'linear',
+		slideLength : 0,
+		slideNum : 0,
+		backFlag : false,
 	});
+
+	var userHeight = '<?php echo esc_js( $sf_6_height ); ?>';
+	if (userHeight) {
+		var el = document.querySelector('.sf-6-<?php echo esc_js( $sf_slider_id ); ?>');
+		if (el) {
+			var targets = el.querySelectorAll('.slides, .slide, .slide img');
+			targets.forEach(function(t) {
+				t.style.setProperty('height', userHeight);
+			});
+		}
+	}
 });
 </script>
 
 <div class="slidesWrap sf-6-<?php echo esc_attr( $sf_slider_id ); ?>">
 	<ul class="slides ulslide">
 	<?php
-	// slide sorting start
-	if ( $sf_6_sorting == 1 ) {
-		// Slide ID Ascending (key Ascending)
-		ksort( $slider['sf_slide_title'] );
+	$sf_6_slide_ids = array();
+	if ( isset( $slider['sf_slide_id'] ) && is_array( $slider['sf_slide_id'] ) && ! empty( $slider['sf_slide_id'] ) ) {
+		$sf_6_slide_ids = $slider['sf_slide_id'];
+	} elseif ( isset( $slider['sf_slide_title'] ) && is_array( $slider['sf_slide_title'] ) ) {
+		$sf_6_slide_ids = array_keys( $slider['sf_slide_title'] );
 	}
-	if ( $sf_6_sorting == 2 ) {
-		// Slide ID Descending (key Descending)
-		krsort( $slider['sf_slide_title'] );
-	}
-	// slide sorting end
 
-	// load sides
-	if ( isset( $slider['sf_slide_title'] ) ) {
-		foreach ( $slider['sf_slide_title'] as $sf_id_1 => $value ) {
+	if ( isset( $slider['sf_slide_title'] ) && is_array( $slider['sf_slide_title'] ) ) {
+		if ( $sf_6_sorting == 1 ) {
+			ksort( $slider['sf_slide_title'] );
+			$sf_6_slide_ids = array_keys( $slider['sf_slide_title'] );
+		} elseif ( $sf_6_sorting == 2 ) {
+			krsort( $slider['sf_slide_title'] );
+			$sf_6_slide_ids = array_keys( $slider['sf_slide_title'] );
+		} elseif ( $sf_6_sorting == 3 ) {
+			shuffle( $sf_6_slide_ids );
+		} elseif ( $sf_6_sorting == 4 ) {
+			asort( $slider['sf_slide_title'] );
+			$sf_6_slide_ids = array_keys( $slider['sf_slide_title'] );
+		} elseif ( $sf_6_sorting == 5 ) {
+			arsort( $slider['sf_slide_title'] );
+			$sf_6_slide_ids = array_keys( $slider['sf_slide_title'] );
+		}
+	}
+
+	if ( ! empty( $sf_6_slide_ids ) ) {
+		foreach ( $sf_6_slide_ids as $sf_id_1 ) {
 			$attachment_id  = $sf_id_1;
-			$sf_slide_title = get_the_title( $attachment_id );
-			$sf_slide_alt   = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
-			// wp_get_attachment_image_src ( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false )
-			// thumb, thumbnail, medium, large, post-thumbnail
-			$sf_slide_thumbnail_url = wp_get_attachment_image_src( $attachment_id, 'large', true ); // attachment medium URL
-			$sf_slide_full_url      = wp_get_attachment_image_src( $attachment_id, 'full', true ); // attachment medium URL
+			$sf_slide_title = isset( $slider['sf_slide_title'][ $sf_id_1 ] ) && trim( $slider['sf_slide_title'][ $sf_id_1 ] ) !== '' ? trim( $slider['sf_slide_title'][ $sf_id_1 ] ) : get_the_title( $attachment_id );
+			$sf_slide_alt   = isset( $slider['sf_slide_alt_text'][ $sf_id_1 ] ) && trim( $slider['sf_slide_alt_text'][ $sf_id_1 ] ) !== '' ? trim( $slider['sf_slide_alt_text'][ $sf_id_1 ] ) : get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+			$sf_slide_thumbnail_url = wp_get_attachment_image_src( $attachment_id, 'large', true );
+			$sf_slide_full_url      = wp_get_attachment_image_src( $attachment_id, 'full', true );
+			if ( ! is_array( $sf_slide_full_url ) ) { continue; }
 			$attachment             = get_post( $attachment_id );
-			$sf_slide_descs         = $attachment->post_content; // attachment description
-			// print_r($sf_slide_full_url);
+			$sf_slide_descs         = isset( $slider['sf_slide_desc'][ $sf_id_1 ] ) && trim( $slider['sf_slide_desc'][ $sf_id_1 ] ) !== '' ? trim( $slider['sf_slide_desc'][ $sf_id_1 ] ) : ( $attachment ? $attachment->post_content : '' );
+			$sf_slide_link_text_1   = isset( $slider['sf_slide_link_text_1'][ $sf_id_1 ] ) ? $slider['sf_slide_link_text_1'][ $sf_id_1 ] : '';
+			$sf_slide_link_1        = isset( $slider['sf_slide_link_1'][ $sf_id_1 ] ) ? $slider['sf_slide_link_1'][ $sf_id_1 ] : '';
+			$sf_slide_link_text_2   = isset( $slider['sf_slide_link_text_2'][ $sf_id_1 ] ) ? $slider['sf_slide_link_text_2'][ $sf_id_1 ] : '';
+			$sf_slide_link_2        = isset( $slider['sf_slide_link_2'][ $sf_id_1 ] ) ? $slider['sf_slide_link_2'][ $sf_id_1 ] : '';
 			?>
 			<li class="slide">
-				<img src="<?php echo esc_url( $sf_slide_full_url[0] ); ?>" alt="<?php echo esc_attr( $sf_slide_alt ); ?>">
+				<img src="<?php echo esc_url( $sf_slide_full_url[0] ); ?>" alt="<?php echo esc_attr( $sf_slide_alt ); ?>" loading="lazy" decoding="async">
 				
-				<?php if ( $sf_slide_title != '' || $sf_slide_descs != '' ) { ?>
+				<?php if ( $sf_slide_title != '' || $sf_slide_descs != '' || ( $sf_slide_link_1 != '' && $sf_slide_link_text_1 != '' ) ) { ?>
 				<div class="m_innerBox">
 					<?php if ( $sf_slide_title != '' ) { ?>
 					<div class="sf-6-slide-title">
@@ -82,6 +131,14 @@ jQuery(window).on('load', function(){
 						<?php echo esc_html( $sf_slide_descs ); ?>
 					</div>
 					<?php } ?>
+
+					<?php if ( $sf_slide_link_1 != '' && $sf_slide_link_text_1 != '' ) { ?>
+					<a href="<?php echo esc_url( $sf_slide_link_1 ); ?>" target="_blank">
+						<button type="button" class="sf-6-slide-button-1-<?php echo esc_attr( $sf_slider_id ); ?>">
+							<?php echo esc_html( $sf_slide_link_text_1 ); ?>
+						</button>
+					</a>
+					<?php } ?>
 				</div>
 				<?php } ?>
 			</li>
@@ -93,16 +150,101 @@ jQuery(window).on('load', function(){
 </div>
 <style>
 
-.slidesWrap .slide{
-	width: <?php echo esc_html( $sf_6_width ); ?>;
+.sf-6-<?php echo esc_html( $sf_slider_id ); ?>,
+.sf-6-<?php echo esc_html( $sf_slider_id ); ?> * {
+	box-sizing: border-box;
 }
-.slidesWrap .slide img{
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> {
 	width: <?php echo esc_html( $sf_6_width ); ?>;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 20px;
+}
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> ul.slides,
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> li.slide {
+	width: 100%;
 	height: <?php echo esc_html( $sf_6_height ); ?>;
 }
-.sf-6-<?php echo esc_html( $sf_slider_id ); ?> {
-	width: <?php echo esc_html( $sf_6_width ); ?>;
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> li.slide img {
+	width: 100%;
+<?php if ( $sf_6_height !== 'auto' ) { ?>
 	height: <?php echo esc_html( $sf_6_height ); ?>;
+	object-fit: cover;
+<?php } else { ?>
+	height: auto;
+<?php } ?>
+}
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> ul.pager {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	margin-top: 14px;
+	margin-bottom: 6px;
+	padding: 0 12px;
+	list-style: none;
+	flex-wrap: wrap;
+}
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> ul.pager li {
+	margin: 0;
+	padding: 0;
+}
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> ul.pager li button {
+	display: block;
+	width: 8px;
+	height: 8px;
+	padding: 0;
+	border: none;
+	border-radius: 9999px;
+	background-color: #cbd5e1;
+	opacity: 0.6;
+	cursor: pointer;
+	text-indent: -9999px;
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: none;
+	outline: none;
+}
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> ul.pager li button:hover {
+	opacity: 0.95;
+	transform: scale(1.25);
+	background-color: #94a3b8;
+}
+
+div.slidesWrap.sf-6-<?php echo esc_html( $sf_slider_id ); ?> ul.pager li button.current {
+	width: 20px;
+	background-color: #0f172a;
+	opacity: 1;
+	border-radius: 9999px;
+}
+
+.sf-6-slide-button-1-<?php echo esc_attr( $sf_slider_id ); ?>,
+.sf-6-slide-button-2-<?php echo esc_attr( $sf_slider_id ); ?> {
+	display: inline-block;
+	min-width: 80px;
+	margin: 6px 4px 0 4px;
+	border-radius: 4px;
+	border: none;
+	color: #fff;
+	background-color: #2563eb;
+	font-weight: 600;
+	font-size: 12px;
+	padding: 6px 14px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+	text-decoration: none;
+}
+.sf-6-slide-button-1-<?php echo esc_attr( $sf_slider_id ); ?>:hover,
+.sf-6-slide-button-2-<?php echo esc_attr( $sf_slider_id ); ?>:hover {
+	background-color: #1d4ed8;
+	color: #fff;
+	transform: translateY(-1px);
 }
 
 /* FIX 15-JAN-2021 */
