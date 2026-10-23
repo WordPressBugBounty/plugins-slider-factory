@@ -1,177 +1,202 @@
-=== Slider, Carousel, and Slideshow by Slider Factory - Image Slider, Video Slider ===
-Contributors: awordpresslife, razipathhan, hanif0991, muhammadshahid, fkfaisalkhan007, sharikkhan007, zishlife, FARAZFRANK
+=== Slider, Image Slider & Carousel by Slider Factory – Responsive Slideshow, Video Slider ===
+Contributors: farazfrank, awordpresslife, sharikkhan007, muhammadshahid, zishlife, fkfaisalkhan007, razipathhan, hanif0991
 Donate link: https://paypal.me/buymecupofcoffee?locale.x=en_GB&country.x=IN
-Tags: slider, image slider, video slider, carousel slider, slideshow
+Tags: slider, image slider, carousel, slideshow, video slider
 Requires at least: 5.0
-Tested up to: 7.0.4
-Stable tag: 1.4.5
+Tested up to: 7.1
 Requires PHP: 7.2
+Stable tag: 1.4.5
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Responsive slider plugin for WordPress. Build your image slider, video slider, product slider, photo carousel, and slideshow easily.
+Responsive WordPress slider plugin. Create responsive image sliders, carousel sliders, video sliders, and slideshows with 12 free layouts.
 
 == Description ==
 
-[youtube https://www.youtube.com/watch?v=H0_FnzsrEGc]
+Slider Factory is a responsive WordPress slider plugin designed to build stunning image sliders, carousels, and slideshows in minutes. Choose photos from your WordPress Media Library, select from 12 responsive free layouts, and embed your slider on any post or page with a simple shortcode — zero coding required.
 
-**Slider Factory** is the most powerful, user-friendly, and fully responsive **image slider**, **video slider**, and **carousel slider** plugin for WordPress. Whether you are looking to create a touch-friendly image carousel for your homepage, an interactive photo gallery slider, a product slider, or a simple slideshow, Slider Factory makes it incredibly easy.
+## Slider Factory Useful Links
 
-With our intuitive **drag-and-drop slider builder**, you can create stunning responsive sliders in minutes without writing a single line of code. Simply upload your images or videos, select one of our 12 beautiful slider layouts, and publish your new slideshow.
+**Pro Version Details:** <a href="https://wpfrank.com/wordpress-plugins/slider-factory-pro/">Learn More About Pro</a><br />
+**Pro Version Demo:** <a href="https://wpfrank.com/demo/slider-factory-pro/">View Pro Slider Demo</a><br />
+**Purchase Pro:** <a href="https://wpfrank.com/account/signup/slider-factory-pro/">Buy Slider Factory Pro</a>
 
-**Important:** Do not install this free version together with Slider Factory Pro on the same site — the two editions share the same slider data keys and can conflict. Deactivate and delete one edition before installing the other.
+## Slider Factory Video Tutorial
 
-### Introducing Slider Factory
+https://www.youtube.com/watch?v=UC0Ru2L4mFk
 
-Slider Factory is the ultimate all-in-one slider plugin for WordPress. Creating an engaging slider, slideshow, or carousel has never been simpler! You can quickly add images, configure slider settings, and instantly see the results using our live preview mode.
+Whether you need a full-width hero image slider, an interactive product carousel, an infinite logo slider, or a responsive video slider, Slider Factory delivers lightweight performance and seamless integration with the Gutenberg block editor, Elementor, Divi, WPBakery, and all major page builders.
 
-We ensure that every image slider and video slider you build is highly optimized for speed, performance, and SEO. Slider Factory is compatible with all major WordPress page builders, meaning you can easily insert your image slider into Elementor, Gutenberg, Divi, WPBakery, Beaver Builder, and more.
+## Key Features at a Glance 
 
-### Responsive Image Sliders
+* **12 Free Responsive Slider Layouts** — Classic slider, carousel slideshow, 3D coverflow, accordion, infinite scroll logo ticker, and product sliders.
+* **Drag and Drop Slider Builder** — Reorder slides, configure slide titles, add URLs, and preview changes in real time.
+* **Touch-Swipe & Mobile-Friendly** — Smooth hardware-accelerated touch swipe for smartphones and tablets.
+* **Logo Slider & Client Carousel** — Showcase brand logos, partners, and sponsors with smooth infinite loop scrolling.
+* **WooCommerce Product Slider** — Display store products and eCommerce items in modern card carousels.
+* **Video Sliders (Pro)** — Embed YouTube and Vimeo videos directly inside your responsive slideshows.
+* **Gutenberg & Elementor Compatible** — Works effortlessly with WordPress blocks, Elementor shortcode widgets, Divi, and Beaver Builder.
+* **SEO & Speed Optimized** — Lightweight footprint, clean HTML5 markup, alt tag support, and conditional CSS/JS loading.
 
-An image slider is a fantastic way to instantly grab your visitors' attention. Slider Factory provides a beautiful foundation to build your image slider, photo carousel, or gallery slideshow. 
+## Responsive Image Sliders
 
-Simply select your favorite images from the WordPress Media Library, drag and drop them into the slide editor, and your responsive image slider is ready! Our image slider is completely touch-swipe friendly, making it perfect for mobile and tablet devices. Whether you need a full-width image slider, a hero image slider, or a simple gallery carousel slider, Slider Factory has you covered.
+Create modern photo sliders and image carousels with smooth transition effects, arrows, pagination dots, and captions. Select photos from your Media Library, drag them into the perfect order, and publish:
 
-### Video Sliders (Pro)
+* **Hero Image Sliders**  — Full-width banner slideshows for homepage headers.
+* **Photo Gallery Sliders**  — Showcase photography portfolios and image galleries with lightbox and thumbnails.
+* **Accordion & 3D Sliders**  — Interactive expanding cards and Flipster 3D coverflow layouts.
 
-Want to take your slideshow to the next level? With Slider Factory Pro, you can create captivating **video sliders**! A video slider allows you to display engaging YouTube videos and Vimeo videos directly inside your slider. 
+## Logo Slider & Client Carousel
 
-Creating a video slider is just as easy as creating an image slider. You can mix and match video slides with image slides to create a truly dynamic and interactive carousel slider. Your video slider will automatically pause when users navigate to the next slide, ensuring a smooth slideshow experience.
+Display your client logos, sponsor banners, partner trademarks, and certifications with an infinite scrolling logo carousel:
 
-### Drag and Drop Slider Builder
+* Continuous auto-scrolling ticker with customizable speed.
+* Grayscale-to-color hover transitions for professional brand showcases.
+* Clickable logo slides with custom external URLs.
 
-Creating a beautiful slideshow doesn't require any technical skills. Slider Factory includes a powerful drag-and-drop slide builder that makes creating an image slider effortless.
+## WooCommerce Product Slider & eCommerce Carousel
 
-* **Instant Preview**: See your slider exactly as it will appear on your website before publishing.
-* **Multi-Select & Bulk Delete**: Manage your image slider slides quickly with multi-select tools.
-* **Clone Slider**: Need to duplicate a slideshow? Clone any image slider or carousel slider with a single click.
-* **Easy Reordering**: Drag and drop your image slides to change their order in the slideshow instantly.
+Showcase your featured products, bestsellers, and store items in an interactive product carousel slider:
 
-### Fully Responsive and Mobile-Ready Slider
+* Clean product cards with image, product title, and custom link.
+* Perfect for e-commerce stores, WooCommerce shops, and landing page product spotlights.
+* Responsive column controls for desktop, tablet, and mobile screens.
 
-Every image slider, video slider, and carousel slider created with Slider Factory is 100% responsive. Your slideshow will automatically adapt to fit any screen size — from large desktop monitors to smartphones and tablets. 
+## Video Sliders (Pro)
 
-Our image sliders feature smooth touch-swipe navigation, allowing mobile users to swipe through the carousel effortlessly. We ensure that your slideshow always looks perfect and provides a premium user experience on all devices.
+Create dynamic video sliders by embedding YouTube and Vimeo videos:
 
-### Compatible with All Page Builders (Elementor Slider)
+* Mix video slides and image slides within the same carousel.
+* Video auto-pause on slide navigation to prevent background audio playback.
+* High-definition video player integration with responsive aspect ratio scaling.
 
-Slider Factory is built to work seamlessly with your favorite page builders. You can easily embed your image slider or carousel slider anywhere on your site using our simple shortcode system.
+## Drag and Drop Slider Builder
 
-* **Elementor Slider**: Use the shortcode widget to add your image slider directly into any Elementor page.
-* **Gutenberg Block Editor**: Easily insert your slideshow into Gutenberg using the native shortcode block.
-* **Divi, WPBakery, Beaver Builder**: Slider Factory's image sliders are fully compatible with all major visual builders.
+Building a custom slideshow takes less than 60 seconds with our visual admin interface:
 
-### 12 Free Slider Layouts
+* **Live Instant Preview** — Review changes and animations before publishing.
+* **Multi-Select & Bulk Delete** — Manage high-volume slide galleries effortlessly.
+* **Clone Slider** — Duplicate any existing slider layout with a single click.
+* **Quick Reordering** — Drag and drop slides to reorder your sequence instantly.
 
-Why settle for a basic image slider when you can have 12 unique, responsive slider layouts? Slider Factory Free includes a wide variety of slider designs:
+## Page Builder & Block Editor Integration
 
-1. **Carousel Slideshow** – A touch-enabled responsive image carousel slider with navigation arrows, dots, and thumbnail previews. Perfect for a classic image slider.
-2. **PhotoRoller Slider** – An interactive mouse-over rolling slideshow for highly creative photo gallery sliders.
-3. **Accordion Slider** – An expanding accordion slider layout showcasing image cards and text titles.
-4. **Camera Master** – A beautiful classic slideshow with a visual progress loading bar and smooth transition effects.
-5. **Cover Flow 3D** – A stunning Flipster 3D coverflow carousel transition slider for portfolios and image galleries.
-6. **Carousel Wipe** – Full-screen sliding banner transitions with sleek direction controls. A great choice for a hero image slider.
-7. **Rotating Slider** – A unique wheel rotating layout with curved angles and dynamic slide rotation.
-8. **Infinite Scroll Carousel** – A looping slide strip scrolling continuously. Perfect for logo showcases, client logo carousels, and brand sliders.
-9. **Photo View Slider** – A Polaroid-styled photo grid slider with beautiful thumbnail navigation.
-10. **Snap Page Slider** – Full-screen section slider grids with vertical scroll snapping for a modern slideshow experience.
-11. **Product Slider** – An e-commerce product cards carousel slider designed specifically for WooCommerce showcases.
-12. **Before-After Image Comparison** – An interactive side-by-side image comparison slider with a draggable handle.
+Slider Factory works seamlessly with your favorite page builders via shortcode:
 
-**Free Plugin Demo:** [View Image Slider Demo](https://wpfrank.com/demo/slider-factory-free-wordpress-plugin/)
+* **Gutenberg Block Editor** — Insert your slideshow using the standard Shortcode block.
+* **Elementor Slider** — Add your slider into any Elementor section using the Shortcode widget.
+* **Divi, WPBakery, Beaver Builder & Oxygen** — 100% compatible with all visual builders.
 
-### Slider Factory Pro Features
+## 12 Free Slider Layouts
 
-Take your image slider and carousel slider to the absolute maximum with Slider Factory Pro!
+1. **Carousel Slideshow** — Touch-enabled responsive image carousel with navigation arrows, dots, and thumbnail previews.
+2. **PhotoRoller Slider** — Interactive mouse-over rolling slideshow for photography galleries.
+3. **Accordion Slider** — Expanding horizontal accordion layout showcasing image cards and text titles.
+4. **Camera Master** — Classic slideshow with a visual progress loading bar and cinematic transition effects.
+5. **Cover Flow 3D** — Flipster 3D coverflow carousel transition slider for portfolios and galleries.
+6. **Carousel Wipe** — Full-screen sliding banner transitions with direction controls for hero image sliders.
+7. **Rotating Slider** — Wheel rotating layout with curved angles and dynamic slide rotation.
+8. **Infinite Scroll Carousel** — Continuous looping slide strip for logo showcases and brand tickers.
+9. **Photo View Slider** — Polaroid-styled photo grid slider with thumbnail navigation.
+10. **Snap Page Slider** — Full-screen section slider grids with vertical scroll snapping.
+11. **Product Slider** — eCommerce product cards carousel slider designed for WooCommerce showcases.
+12. **Before-After Comparison** — Interactive side-by-side image comparison slider with a draggable handle.
 
-* **21 Total Slider Layouts** – Nine additional premium layouts for your image slider and carousel slider needs.
-* **Video Sliders** – Add YouTube and Vimeo videos to your slideshows to create an engaging video slider.
-* **Advanced Transition Effects** – Fade, slide, and stunning CSS3 animation effects for your slideshow.
-* **Speed Control** – Complete control over your image slider transition speed and autoplay intervals.
-* **Pause on Hover** – Automatically pause the carousel slider when visitors hover over it.
-* **Fullscreen Slider Mode** – Allow users to view your image slider in breathtaking fullscreen.
-* **Thumbnail Navigation** – Display beautiful, clickable thumbnails below your main image slider.
-* **Dots & Arrow Navigation** – Customize the navigation controls for your carousel slider.
-* **Loading Bar** – Add a visual progress indicator to your slideshow.
-* **Image Links & Buttons** – Add clickable links and call-to-action buttons directly to each image slide.
-* **Adaptive Height** – Your slider will automatically adjust its height based on the image dimensions.
-* **Custom CSS** – Add your own styling to customize your image slider completely.
-* **WPML & Translation Ready** – Fully compatible with WPML for multilingual sliders.
+**Free Plugin Demo:** <a href="https://wpfrank.com/demo/slider-factory-free-wordpress-plugin/">View Image Slider Demo</a>
 
-**Pro Version Details:** [Learn More About Pro](https://wpfrank.com/wordpress-plugins/slider-factory-pro/)
-**Pro Version Demo:** [View Pro Slider Demo](https://wpfrank.com/demo/slider-factory-pro/)
-**Purchase Pro:** [Buy Slider Factory Pro](https://wpfrank.com/account/signup/slider-factory-pro/)
+## Slider Factory Pro Features
+
+Upgrade to Slider Factory Pro for advanced features and premium slider layouts:
+
+* **21 Total Slider Layouts** — Nine additional premium layouts for image and video sliders.
+* **Video Sliders** — Embed YouTube and Vimeo videos with autoplay and smart pause.
+* **Advanced Transition Effects** — 3D flips, CSS3 cube animations, fade, and zoom effects.
+* **Custom Navigation & Dots** — Fully customizable arrow styles, bullet indicators, and progress bars.
+* **Thumbnail Navigation Bar** — Clickable thumbnail carousel synced with the main slider.
+* **Slide Linking & Action Buttons** — Add custom call-to-action buttons and external links to each slide.
+* **Adaptive Height & Auto-Scaling** — Automatically adjusts slider height based on active slide dimensions.
+* **Custom CSS Editor** — Fine-tune styling directly inside the slider settings panel.
+* **Priority Support & Regular Updates** — Dedicated technical support and feature additions.
+
+**Pro Plugin Demo:** <a href="https://wpfrank.com/demo/slider-factory-pro/">View Responsive Slider Pro Demo</a>
 
 == Installation ==
 
-Installing your new image slider plugin is incredibly easy!
+Installing Slider Factory on your WordPress website:
 
-1. Upload the plugin files to your `/wp-content/plugins/` folder, or install directly using the WordPress "Add New Plugin" installer.
-2. Activate the Slider Factory plugin through the 'Plugins' menu in WordPress.
-3. Navigate to the "Slider Factory" tab in your admin dashboard menu.
-4. Click "+ New Slider" to start building your first image slider, video slider, or carousel slider!
+1. In your WordPress admin dashboard, navigate to **Plugins > Add New**.
+2. Search for `Slider Factory` and click **Install Now**, then **Activate**.
+   *(Alternatively, upload the unzipped plugin folder to `/wp-content/plugins/`)*.
+3. Go to the **Slider Factory** menu in your WordPress dashboard.
+4. Click **+ New Slider**, select your preferred layout, and upload your images.
+5. Copy the generated shortcode (e.g., `[slider_factory id="1"]`) and paste it into any page, post, or widget.
 
-For detailed instructions on how to create an image slider, see the [Plugin Documentation](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/).
+For detailed guides, visit the <a href="https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/">Plugin Documentation</a>.
 
 == Frequently Asked Questions ==
 
 = How do I create my first image slider? =
-Go to Slider Factory > Add New Slider. Upload your photos to the slide builder, choose your favorite image slider layout, configure your settings, and save! You can then copy the shortcode and paste your new image slider anywhere on your site.
 
-= Can I create a carousel slider with this plugin? =
-Yes! Slider Factory is specifically designed to build both standard image sliders and multi-item carousel sliders. We offer several carousel slider layouts, including Infinite Scroll and Product carousels.
+Navigate to Slider Factory > Add New Slider in your WordPress dashboard. Upload your photos to the slide builder, choose one of the 12 free layouts, adjust your autoplay and transition settings, and click Save. Copy the generated shortcode and paste it into any WordPress page, post, or block.
 
-= Is this a responsive slider? =
-Absolutely! Every image slider, carousel slider, and video slider created with Slider Factory is 100% responsive. Your slideshow will automatically resize and adapt perfectly to desktops, tablets, and mobile phones.
+= Can I create an infinite logo slider or client carousel? =
 
-= Can I use this as an Elementor slider? =
-Yes! Slider Factory works perfectly with Elementor. Simply create your image slider or carousel slider in the Slider Factory dashboard, copy the shortcode, and paste it into an Elementor Shortcode Widget. 
+Yes! Select Layout 8 (Infinite Scroll Carousel). Upload your client or partner logos, set your desired scroll speed, and publish. The logos will scroll continuously in a smooth infinite loop.
 
-= Does it work with the Gutenberg Block Editor? =
-Yes, Slider Factory is fully compatible with Gutenberg. You can easily embed your image slider or slideshow using the native Gutenberg Shortcode Block.
+= Can I create a WooCommerce product slider? =
 
-= Can I add videos to create a video slider? =
-Yes! Video slider functionality is available in Slider Factory Pro. You can easily embed YouTube and Vimeo videos to create an engaging, interactive video slider or mix them with standard image slides.
+Yes! Layout 11 is specifically styled for eCommerce product showcases. You can highlight product photos, item titles, and direct purchase links in a clean, mobile-responsive product carousel.
 
-= How many sliders can I create? =
-There is no limit! You can create an unlimited number of image sliders, carousel sliders, and slideshows. You can also add unlimited image slides to each slider.
+= Is this slider plugin responsive on mobile devices? =
 
-= Can I put multiple sliders on the same page? =
-Yes, you can easily place multiple image slider or carousel slider shortcodes on a single page or post. Each slideshow will function completely independently without conflicts.
+Yes, 100%. Every layout in Slider Factory automatically resizes to fit desktops, laptops, tablets, and smartphones, with full hardware-accelerated touch-swipe navigation on mobile screens.
 
-= Can I change the image slider autoplay speed? =
-Yes, you can easily adjust the autoplay interval and transition speed for your slideshow within the slider settings panel.
+= How do I add the slider to Elementor? =
 
-= Does the slider support touch-swipe on mobile? =
-Yes! All of our image sliders and carousel sliders feature smooth, hardware-accelerated touch-swipe navigation for mobile and tablet devices, ensuring a premium slideshow experience.
+Create and save your slider in Slider Factory, then copy its shortcode. In Elementor, drag the Shortcode widget onto your page, paste the shortcode, and update your page.
 
-= Can I add links to my image slides? =
-Image linking is a powerful feature available in Slider Factory Pro. You can add clickable URLs and multiple call-to-action buttons to every slide in your image slider.
+= Does it support the Gutenberg Block Editor? =
 
-= Is the slider SEO friendly? =
-Yes! We've built Slider Factory to be highly SEO optimized. You can add title tags and alt text to your images, ensuring search engines can properly index your image slider and slideshow content.
+Yes. Simply insert a Shortcode block in Gutenberg and paste your Slider Factory shortcode.
 
-= What page builders are supported? =
-Slider Factory's image sliders and carousel sliders are compatible with all major page builders, including Elementor, Gutenberg, WPBakery Page Builder, Visual Composer, Divi, Beaver Builder, and Oxygen.
+= Can I add YouTube and Vimeo videos? =
+
+Video slider functionality is supported in Slider Factory Pro. You can embed YouTube and Vimeo videos or mix video slides with standard image slides in the same carousel.
+
+= Can I add multiple sliders to the same page? =
+
+Yes. You can embed multiple image sliders and carousels on the same page. Each slider operates independently with its own settings and navigation controls.
+
+= How do I change the autoplay interval and transition speed? =
+
+Each slider has dedicated speed and autoplay interval controls inside the settings panel. You can easily adjust the slide display duration and transition speed.
+
+= Can I add clickable links to my slides? =
+
+Slide linking with custom URLs and call-to-action buttons is available in Slider Factory Pro.
+
+= Is Slider Factory SEO friendly? =
+
+Yes. Slider Factory generates clean, lightweight HTML5 markup and fully respects WordPress image alt tags and titles so search engines can index your visual content properly.
 
 = How do I get support for my slider? =
-If you need help configuring your image slider, video slider, or carousel slider, please visit our documentation at [wpfrank.com](https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/) or open a thread in the WordPress.org support forum.
+
+If you need help configuring your image slider, video slider, or carousel slider, please visit our documentation at <a href="https://wpfrank.com/slider-factory-free-wordpress-plugin-documentation/">wpfrank.com</a> or open a thread in the WordPress.org support forum.
 
 == Screenshots ==
 
-1. Image Slider Layout 1 – Showcase images with a classic, responsive slider layout.
-2. Video Slider Layout 2 – Embed YouTube and Vimeo videos into a sleek video slider.
-3. Carousel Slider Layout 3 – Display multiple items side-by-side in a responsive carousel slider.
-4. Photo Gallery Slider Layout 4 – Create a stunning photo gallery slideshow.
-5. Team Carousel Slider Layout 5 – Highlight your team members in an interactive carousel slider.
-6. Testimonial Slider Layout 6 – Showcase customer testimonials in a beautiful slideshow.
-7. Content Slider Layout 7 – Display text and images together in a dynamic content slider.
-8. Hero Image Slider Layout 8 – Create full-width hero banners for your homepage.
-9. Product Slider Layout 9 – Showcase your e-commerce products in a carousel slider.
-10. Event Slider Layout 10 – Display upcoming events in a responsive slideshow.
-11. Blog Post Slider Layout 11 – Feature your latest blog posts in an engaging slider.
-12. Custom Slider Layout 12 – Build fully customizable image sliders and slideshows.
+1. Image Slider Layout 1 — Showcase images with a classic, responsive slider layout.
+2. Video Slider Layout 2 — Embed YouTube and Vimeo videos into a video slider.
+3. Carousel Slider Layout 3 — Display multiple items side-by-side in a responsive carousel slider.
+4. Photo Gallery Slider Layout 4 — Create a photo gallery slideshow.
+5. Team Carousel Slider Layout 5 — Highlight team members in an interactive carousel slider.
+6. Testimonial Slider Layout 6 — Showcase customer testimonials in a slideshow.
+7. Content Slider Layout 7 — Display text and images together in a dynamic content slider.
+8. Hero Image Slider Layout 8 — Create full-width hero banners for your homepage.
+9. Product Slider Layout 9 — Showcase your e-commerce products in a carousel slider.
+10. Event Slider Layout 10 — Display upcoming events in a responsive slideshow.
+11. Blog Post Slider Layout 11 — Feature your latest blog posts in a slider.
+12. Custom Slider Layout 12 — Build fully customizable image sliders and slideshows.
 
 == Changelog ==
 
@@ -198,7 +223,7 @@ If you need help configuring your image slider, video slider, or carousel slider
 
 = 1.3.13 =
 * Layout 11 is not working on default theme: fixed
-* Dashboard button CSS changed #e52e00
+* Dashboard button CSS changed to #e52e00
 * Layout 11 CSS refactored to use Flexbox
 * Layout 11 compatibility issue with Block themes fixed
 * Performance issue with adding multiple images fixed
@@ -211,7 +236,7 @@ If you need help configuring your image slider, video slider, or carousel slider
 
 = 1.3.10 =
 * Manage slider interface updated
-* Tested on Latest WordPress 6.0.3
+* Tested on the latest WordPress 6.0.3
 
 = 1.3.9 =
 * PHP v7.4.x tested
@@ -239,38 +264,29 @@ If you need help configuring your image slider, video slider, or carousel slider
 * Compatible with 5.8.1 and tested with regular update.
 
 = 1.3.0 =
-* Layout 12 - Image loading issue on page load, fixed 
+* Layout 12 – Image loading issue on page load, fixed
 * Security issue on data saving, patched
 * Compatible with on WordPress version 5.8
 
 = 1.2.0 =
-* Layout 7 - Error in shortcode fixed
-* Layout 4 - Image fit issue resolved
-* Layout 5 - Page scroll issue resolved
+* Layout 7 – Error in shortcode fixed
+* Layout 4 – Image fit issue resolved
+* Layout 5 – Page scroll issue resolved
 * Enhanced the code security as per WordPress guidelines
-* Layout 12 - Image quality issue resolved 
- 
+* Layout 12 – Image quality issue resolved
+
 = 1.1.1 =
-* Layout 1 - image loading issue fixed on page load
-* Layout 1 - image height issue for different shortcodes on same page fixed
+* Layout 1 – image loading issue fixed on page load
+* Layout 1 – image height issue for different shortcodes on same page fixed
 * Version number added on All Slider Layouts page
 
 = 1.1.0 =
 * New layouts 10, 11 & 12 added
 * Layout 10 height issue fixed
-* Disabled PRO features added to layout settings part
+* Disabled PRO features added to the layout settings part
 * Layout 11 description font issue and default height issue fixed
 * Layout 5 default size issue fixed
 * Layout 2 height in px issue fixed
 
 == Upgrade Notice ==
-
-= 1.3.12 =
-* Readme improvements for better plugin directory listing
-
-= 1.0.0 =
-* First version release
-* Admin Dashboard
-* All Layout And Shortcode Page
-* Create and Mange Sliders
-* Shortcode
+* Keep backup via import and export white updateing plugin.

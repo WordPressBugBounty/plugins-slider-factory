@@ -1261,7 +1261,7 @@ msgid "Slide Order By"
 msgstr "Slide Order By"
 
 msgid "Slide Title"
-msgstr "Slide Title"
+msgstr "स्लाइड शीर्षक"
 
 msgid "Slide Title Ascending"
 msgstr "Slide Title Ascending"
@@ -1743,3 +1743,78 @@ msgstr "uiChange"
 msgid "wp-color-picker"
 msgstr "wp-color-picker"
 
+
+msgid "Edit Slide Details"
+msgstr "स्लाइड विवरण संपादित करें"
+
+msgid "Customize title, content, links, and SEO alt attributes for Slide ID: "
+msgstr "स्लाइड ID: के लिए शीर्षक, सामग्री, लिंक और SEO alt विशेषताएँ अनुकूलित करें: "
+
+msgid "Slide"
+msgstr "स्लाइड"
+
+msgid "of"
+msgstr "का"
+
+msgid "Alt Text (SEO)"
+msgstr "ऑल्ट टेक्स्ट (SEO)"
+
+msgid "Description / Caption"
+msgstr "विवरण / कैप्शन"
+
+msgid "Slide Media Type"
+msgstr "स्लाइड मीडिया प्रकार"
+
+msgid "Link 1 Button"
+msgstr "लिंक 1 बटन"
+
+msgid "Button Label"
+msgstr "बटन लेबल"
+
+msgid "Destination URL"
+msgstr "गंतव्य URL"
+
+msgid "Link 2 Button"
+msgstr "लिंक 2 बटन"
+
+msgid "Available in Pro"
+msgstr "प्रो संस्करण में उपलब्ध"
+
+msgid "Video Provider"
+msgstr "वीडियो प्रदाता"
+
+msgid "YouTube Video ID (e.g. dQw4w9WgXcQ)"
+msgstr "यूट्यूब वीडियो ID (जैसे dQw4w9WgXcQ)"
+
+msgid "Vimeo Video ID (e.g. 111585227)"
+msgstr "विमियो वीडियो ID (जैसे 111585227)"
+
+msgid "Direct MP4 Video URL (e.g. https://domain.com/video.mp4)"
+msgstr "डायरेक्ट MP4 वीडियो URL (जैसे https://domain.com/video.mp4)"
+
+msgid "Enter YouTube Video ID (e.g. dQw4w9WgXcQ or full link)..."
+msgstr "यूट्यूब वीडियो ID दर्ज करें (जैसे dQw4w9WgXcQ या पूर्ण लिंक)..."
+
+msgid "Enter Vimeo Video ID (e.g. 111585227 or full link)..."
+msgstr "विमियो वीडियो ID दर्ज करें (जैसे 111585227 या पूर्ण लिंक)..."
+
+msgid "Enter direct https://... MP4 URL"
+msgstr "डायरेक्ट https://... MP4 URL दर्ज करें"
+
+msgid "Embed Video Player"
+msgstr "वीडियो प्लेयर एम्बेड करें"
+
+msgid "*(Enable to embed the video player directly in the slide. Disable to show a thumbnail image that links to the video.)*"
+msgstr "*(स्लाइड में सीधे वीडियो प्लेयर एम्बेड करने के लिए सक्षम करें। थंबनेल छवि दिखाने के लिए असमर्थ करें।)*"
+
+msgid "No preview available"
+msgstr "कोई पूर्वावलोकन उपलब्ध नहीं है"
+
+msgid "Delete Slide"
+msgstr "स्लाइड हटाएं"
+
+msgid "Build your first layout to begin."
+msgstr "शुरू करने के लिए अपना पहला लेआउट बनाएं।"
+
+msgid "Create First Slider"
+msgstr "पहला स्लाइडर बनाएं"
